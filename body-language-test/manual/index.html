@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Body Language: the manual</title>
+<meta name="description" content="By Samuel Justice. A Sammy J plug-in.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0d241e; --panel:#12302a; --ink:#efe9da; --dim:#b4bfb2; --line:#24453c; --a1:#cdae70; --a2:#ec6a45; --a3:#cdae70; --a4:#ec6a45; --link:#cdae70; --display:'Fraunces', Georgia, serif; --body:'Inter', system-ui, sans-serif; --mono:ui-monospace, Menlo, Consolas, monospace; --radius:6px; --size:17px; }
+  
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--size)/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .bar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding: 14px max(20px, calc((100vw - 1240px) / 2));
+    background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); color: var(--dim); font-size: 13px; }
+  .bar a { color: var(--dim); text-decoration: none; }
+  .bar a:hover { color: var(--ink); }
+  .bar .mark { color: var(--ink); margin-right: auto; }
+  .shell { max-width: 1240px; margin: 0 auto; padding: 0 20px 80px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 0 56px; }
+  .title { grid-column: 1 / -1; padding: 64px 0 44px; }
+  .title h1 { margin: 0; font: 700 clamp(40px, 7vw, 84px)/1 var(--display); overflow-wrap: anywhere; }
+  .title .strap { margin: 0 0 16px; color: var(--dim); font-size: 13px; }
+  .title .version { margin: 20px 0 0; color: var(--dim); font-size: 13px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .title { text-wrap: balance; }
+  .button { display: inline-block; padding: 12px 18px; border: 1px solid var(--ink); border-radius: var(--radius); background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600; letter-spacing: inherit; }
+  .button:hover { filter: brightness(1.12); }
+  .title .get { display: inline-flex; flex-wrap: wrap; gap: 10px; }
+  .toc { position: sticky; top: 76px; align-self: start; max-height: calc(100vh - 96px); overflow: auto; font-size: 13px; padding-bottom: 20px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc a { display: block; padding: 5px 0 5px 12px; color: var(--dim); text-decoration: none; border-left: 2px solid var(--line); line-height: 1.35; }
+  .toc a:hover { color: var(--ink); }
+  .toc a.on { color: var(--ink); border-color: var(--a1); }
+  .doc { min-width: 0; max-width: 46rem; }
+  .doc > :first-child { margin-top: 0; }
+  .doc p, .doc ul, .doc ol, .doc table, .doc pre, .doc blockquote, .doc details { margin: 0 0 1.05em; }
+  .doc h2 { margin: 64px 0 22px; font: 700 28px/1.2 var(--display); text-wrap: balance; }
+  .doc h3 { margin: 40px 0 12px; font: 700 20px/1.3 var(--display); text-wrap: balance; }
+  .doc h4 { margin: 28px 0 8px; font: 700 16px/1.3 var(--display); }
+  .doc ul, .doc ol { padding-left: 1.3em; }
+  .doc li { margin: .3em 0; }
+  .doc li::marker { color: var(--dim); }
+  .doc img { max-width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: var(--radius); }
+  .doc p > a > img, .doc p > img { margin: 6px 0; }
+  .doc p[align="center"] img { margin-inline: auto; }
+  .doc td img { display: inline-block; }
+  .doc img[src*="img.shields.io"] { display: inline-block; border: 0; border-radius: 0; }
+  .doc code, .doc kbd { font: 400 .84em/1.4 var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 3px; padding: .1em .35em; }
+  .doc pre { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; overflow: auto; }
+  .doc :not(pre) > code { overflow-wrap: anywhere; }
+  .doc pre code { background: none; border: 0; padding: 0; font-size: 14px; overflow-wrap: normal; }
+  .doc .scroll { overflow-x: auto; margin: 0 0 1.05em; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+  .doc table { border-collapse: collapse; width: 100%; margin: 0; font-size: .92em; }
+  .doc th, .doc td { text-align: left; vertical-align: top; padding: 9px 14px; border-bottom: 1px solid var(--line); }
+  .doc tr:last-child td { border-bottom: 0; }
+  .doc blockquote { margin-left: 0; padding: 2px 0 2px 18px; border-left: 2px solid var(--a1); color: var(--dim); }
+  .doc hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0; }
+  .doc details { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; background: var(--panel); }
+  .doc summary { cursor: pointer; }
+  .foot { max-width: 1240px; margin: 0 auto; padding: 22px 20px 40px; border-top: 1px solid var(--line); color: var(--dim); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .foot a { color: inherit; }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: minmax(0, 1fr); }
+    .title { padding: 40px 0 28px; }
+    .toc { position: static; max-height: none; margin-bottom: 36px; padding: 0; }
+    .toc ol { flex-direction: row; flex-wrap: wrap; gap: 6px 8px; }
+    .toc a { border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 9px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .doc a.shot { cursor: zoom-in; }
+  .viewer { position: fixed; inset: 0; z-index: 20; display: none; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(4px); }
+  .viewer.open { display: grid; grid-template-rows: 1fr auto; }
+  .viewer figure { margin: 0; min-height: 0; display: grid; place-items: center; padding: 56px 72px 12px; }
+  .viewer img { max-width: 100%; max-height: 100%; object-fit: contain; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+  .viewer .vbar { display: flex; justify-content: space-between; gap: 24px; padding: 14px 28px 22px; font: 400 13px/1.5 var(--body); color: var(--dim); }
+  .viewer .vbar .caption { color: var(--ink); max-width: 60em; }
+  .viewer .vbar .count { font-family: var(--mono); white-space: nowrap; }
+  .viewer button { position: absolute; background: none; border: 0; color: var(--ink); font: 400 30px/1 var(--body); cursor: pointer; padding: 18px; opacity: .75; }
+  .viewer button:hover { opacity: 1; color: var(--a1); }
+  .viewer .close { top: 6px; right: 12px; }
+  .viewer .prev, .viewer .next { top: 50%; transform: translateY(-50%); }
+  .viewer .prev { left: 8px; }
+  .viewer .next { right: 8px; }
+  .viewer.single .prev, .viewer.single .next { display: none; }
+  @media (max-width: 900px) {
+    .viewer figure { padding: 52px 12px 8px; }
+    .viewer .prev, .viewer .next { top: auto; bottom: 58px; transform: none; }
+  }
+
+
+  body { background: radial-gradient(1000px 420px at 70% -60px, rgba(205, 174, 112, .10) 0, transparent 70%), var(--bg); }
+  .bar, .toc, .title .strap, .title .version, .foot { letter-spacing: .16em; text-transform: uppercase; font-size: 11px; font-weight: 500; }
+  .mark { font: 600 17px/1 var(--display); letter-spacing: .02em; color: var(--a1) !important; }
+  .title h1 { font: 600 clamp(44px, 8vw, 96px)/1 var(--display); letter-spacing: -.01em; }
+  .title h1::after { content: ""; display: block; width: 120px; height: 2px; margin-top: 22px; background: linear-gradient(90deg, var(--a1) 0 70%, var(--a2) 70%); }
+  .title .strap { color: var(--a1); }
+  .doc h2 { font: 600 30px/1.15 var(--display); padding-top: 26px; border-top: 1px solid var(--line); }
+  .doc h2::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 14px; vertical-align: middle;
+    position: relative; top: -3px; border: 1.5px solid var(--a1); background: var(--k); }
+  .k1, .k3, .k5 { --k: transparent; } .k2, .k4, .k6 { --k: var(--a1); }
+  .doc h3 { font: 600 21px/1.3 var(--display); color: var(--a1); }
+  .doc h4 { font: 500 12px/1.4 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+  .doc strong { color: #fffaf0; }
+  .doc th { font: 500 11px/1.4 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--a1); }
+  .doc blockquote { border-color: var(--a2); }
+  .doc img { border-color: var(--line); background: var(--panel); }
+  .toc a.on { color: var(--a1); border-color: var(--a1); }
+  .button { background: var(--a1); border-color: var(--a1); color: #10231d; font: 600 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; border-radius: 999px; padding: 13px 20px; }
+
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="https://samueljustice.github.io/sammyj-downloads/body-language-test/">&larr; Body Language test</a>
+  <span class="mark">Body Language</span>
+  <a href="https://samueljustice.github.io/sammyj-downloads/body-language-test/">Get it</a>
+  
+</div>
+<div class="shell">
+  <header class="title">
+    <p class="strap">Sammy J / Dialogue movement</p>
+    <h1>Body Language</h1>
+    <p class="version"><a class="button" href="https://samueljustice.github.io/sammyj-downloads/body-language-test/">Get the test version</a><span>Test version 0.1.1, works until 2027-01-23</span><span>The manual</span></p>
+  </header>
+  <nav class="toc" aria-label="Contents"><ol><li><a href="#what-it-is-for">What it is for</a></li><li><a href="#while-it-is-in-testing">While it is in testing</a></li><li><a href="#where-to-put-it">Where to put it</a></li><li><a href="#the-controls">The controls</a></li><li><a href="#placing-a-close-recording-in-a-scene">Placing a close recording in a scene</a></li><li><a href="#automation">Automation</a></li><li><a href="#the-window">The window</a></li><li><a href="#not-built-yet">Not built yet</a></li><li><a href="#updates">Updates</a></li></ol></nav>
+  <main class="doc">
+
+<p>By Samuel Justice. A Sammy J plug-in.</p>
+<p>Body Language makes close-recorded dialogue move the way a boom recording of a moving actor does. A mocap headset, an ADR booth or a voice-over mic hears the voice from the same place whatever the actor does. A boom does not: as the actor turns, the mic ends up beside or behind the mouth and the voice loses some of its presence and air; while the operator chases the move the mic is briefly off axis and takes on its off-axis colour; as the actor comes nearer or moves away, the low end, the low mids and the level change with them. Body Language puts those changes back, from where you put the boom.</p>
+<p>It is subtle by default. At its natural setting a move should sound like the recording was always made that way, not like an effect. Sweep, the one deliberately cinematic part, is off until you turn it up.</p>
+<p>The plug-in has no latency, so it can be used live, in Pro Tools or any other host, without delay compensation.</p>
+<p><a class="shot" href="docs/turn.gif" target="_blank" rel="noopener" data-caption="The boom swung round the head with Sweep on: the voice's rings, the markers on the line to the mic, and the sweep's ring following the move"><img src="docs/turn.gif" alt="The boom swung round the head with Sweep on: the voice's rings, the markers on the line to the mic, and the sweep's ring following the move"></a></p>
+<h2 id="what-it-is-for" class="k1">What it is for</h2>
+<p>Body Language is for dialogue in game cinematics and trailers: performance capture from headsets and face cameras, ADR, and voice-over recorded in a booth. Recordings like these are clean and close, and they do not move. Production sound does, because a boom operator is following an actor who turns, walks and leans, and a good part of what makes dialogue sit in a scene is that movement.</p>
+<p>The usual way to put it back is by hand, with automated EQ and a narrow notch swept back and forth across a line. That works, and takes minutes a line. Body Language is meant to do the same job in seconds: move one thing, the boom, and hear what a boom would have heard.</p>
+<p>It is a stylised tool and is judged by ear. The curves come from how a voice and a boom microphone behave, but the aim is dialogue that sounds right in a mix, not a simulation of a particular room, actor or microphone.</p>
+<p>Three things it is trying to get right:</p>
+<ul>
+<li>At its natural setting a move sounds as though the line was recorded that way. Nothing should read as an equaliser being moved.</li>
+<li>With nothing moved it does nothing at all. With Input on Boom and the boom on mic, what comes out is what went in, bit for bit.</li>
+<li>Everything can be pushed. Amount goes to three times natural, and Sweep and Flick are there for the deliberate, cinematic moves.</li>
+</ul>
+<h2 id="while-it-is-in-testing" class="k2">While it is in testing</h2>
+<p>This is a test version. It is not finished, and the sound of every move is a first setting that has not yet been tuned by ear on real projects. That is what testing is for.</p>
+<p>What we would most like to hear about:</p>
+<ol>
+<li>
+<strong>Does it sound natural?</strong> At Amount 100%, swing the boom round a line of dialogue. Does it sound like the actor turned, or like an EQ moving? Where is it too much, and where can you not hear it at all? What Amount do you settle on?</li>
+<li>
+<strong>Fast moves.</strong> A quick move is darker for a moment than where it settles, as an operator catches up. Does that help, or is it too much?</li>
+<li>
+<strong>Distance and Proximity.</strong> Does a voice moved further away sound further away? On close-recorded ADR in particular, does it lose enough of its low-mid weight? Which settings of Input, Closeness, Distance and Proximity did you end up with?</li>
+<li>
+<strong>Sweep and Flick.</strong> Do they do what you would do by hand with a notch? The notch cuts only while it is travelling: does that put the movement where you want it, or did you set it to cut on any move? Are the depth, the width and the range right as they come, and which of the Sweep row's values did you change? Is a Flick the right length?</li>
+<li>
+<strong>Playing it.</strong> Is the boom comfortable to move with a mouse? Can you get to the value you want? Is anything confusing, or in the way?</li>
+<li>
+<strong>Automation.</strong> In your host, does a move you perform record, edit and play back like any other automation? Does a Flick?</li>
+<li>
+<strong>The picture.</strong> Does the dial help you understand what you are hearing? Does it ever stutter, or slow your session down?</li>
+<li>
+<strong>Trouble.</strong> Any crash, click, drop-out, or session that does not open as you left it.</li>
+<li>
+<strong>What is missing.</strong> What would stop you using it on a real project today?</li>
+</ol>
+<p>With anything you report, it helps to know the host and its version, the operating system, the session's sample rate, and the settings you had. A short clip of the line before and after is worth more than a description.</p>
+<p>Send what you find to Samuel Justice, by the same route this test version reached you.</p>
+<p>A test version works for a limited time. The line under the plug-in's name says the last day it works. After that day it passes audio through untouched and says so in the same place; it never mutes anything, a session with it in still opens, and its settings are kept. A newer test version, or the finished plug-in, picks up where it left off.</p>
+<h2 id="where-to-put-it" class="k3">Where to put it</h2>
+<p>Put Body Language on the dialogue track itself, before any reverb or room sends, so the room hears the voice as it would have reached the mic. Anything that should treat the voice as recorded (clean-up, de-essing, a fixed EQ) can go before it.</p>
+<p>It is made for mono dialogue tracks. On a stereo track it treats the two channels as two mono channels that share one position, so a stereo pair stays matched.</p>
+<p>With Boom input and nothing moved, the plug-in passes the audio through exactly as it came in, bit for bit. It changes nothing until something moves, and that holds with Sweep turned all the way up: the sweep only cuts during a move.</p>
+<h2 id="the-controls" class="k4">The controls</h2>
+<h3 id="turn">Turn</h3>
+<p>Turn is where the boom is round the actor's head, seen from above, in degrees. 0 is on mic: the mic in front of the mouth, aimed at it. Positive values go round to the actor's right, negative to their left, and 180 is directly behind. The range is −180 to 180 and the default is 0.</p>
+<p>The further round the head the mic is, the more of the voice's presence and air it loses, the way a voice beams forward more at higher frequencies and the head shadows the highs. The change is a broad tilt with no corner anywhere, and it leaves the low end almost alone. With the mic 90 degrees round, at 100% Amount, the voice loses about 0.9 dB at 500 Hz, 1.6 dB at 1 kHz, 2.5 dB at 2 kHz, 4.8 dB at 8 kHz and 6 dB at 16 kHz. Directly behind, it loses about 1.7 dB at 500 Hz, 3.1 dB at 1 kHz, 4.9 dB at 2 kHz, 9.4 dB at 8 kHz and 11.9 dB at 16 kHz. Left and right are the same.</p>
+<p>The boom goes round the head the short way. From 170 degrees right to 170 degrees left it travels 20 degrees round the back, never 340 degrees round the front. That applies to the values the plug-in is given: an automation ramp drawn from 170 to −170 passes through every value in between, including 0, so it goes round the front. To go round the back in a drawn lane, take it up to 180 and carry on from −180.</p>
+<h3 id="distance">Distance</h3>
+<p>Distance is how far the boom is from the mouth: −100% is nearer, +100% is further, and 0% (the default) is a normal boom working distance of 0.6 metres. How far ±100% goes is set by Distance Range; at its default, −100% is 0.3 metres and +100% is 1.2 metres.</p>
+<p>Nearer, the low end and the low mids grow (proximity effect) and the voice gets a little louder; further, they thin and the voice gets a little quieter. At the default settings, −100% adds about 3.7 dB at 125 Hz, 2.9 dB at 250 Hz, 2.2 dB at 500 Hz, 1.8 dB at 1 kHz and 1.5 dB at the top of the voice, and +100% takes away about as much (3.5 dB at 125 Hz, 2.8 dB at 250 Hz, 2.1 dB at 500 Hz, 1.7 dB at 1 kHz and 1.5 dB at the top). The 1.5 dB at the top is the level change, which is the same at every frequency; see Level for why it is small. The rest is the change of tone, and Proximity sets how much of that there is.</p>
+<p><a class="shot" href="docs/distance.gif" target="_blank" rel="noopener" data-caption="The boom moved away from the voice and back in close, with the Proximity row saying what the distance is doing to the low mids"><img loading="lazy" src="docs/distance.gif" alt="The boom moved away from the voice and back in close, with the Proximity row saying what the distance is doing to the low mids"></a></p>
+<h3 id="proximity">Proximity</h3>
+<p>Proximity is how strongly the low end and the low mids follow Distance, from 0% to 200%. 100%, the default, is the natural amount. At 0% a move in or out changes only the level; at 200% the tone changes twice as much. It does nothing with the boom at the working distance, and it does not change the level.</p>
+<p>The change reaches from the bottom of the voice up through the low mids, in a broad tilt that has all but gone by 2 kHz. At 100%, each halving of the distance adds about 2.9 dB at 50 Hz, 2.2 dB at 125 Hz, 1.4 dB at 250 Hz, 0.7 dB at 500 Hz and 0.3 dB at 1 kHz, on top of the level change described under Level. Each doubling takes away about as much: 2.8 dB at 50 Hz, 2.0 dB at 125 Hz, 1.3 dB at 250 Hz, 0.6 dB at 500 Hz and 0.2 dB at 1 kHz.</p>
+<p>With the level included, this is what Distance at either end does to the low mids, at 100% Amount with the boom on mic:</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Distance</th>
+<th>Distance Range</th>
+<th>Proximity</th>
+<th>250 Hz</th>
+<th>500 Hz</th>
+<th>Top of the voice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+100%</td>
+<td>2.0x</td>
+<td>100%</td>
+<td>−2.8 dB</td>
+<td>−2.1 dB</td>
+<td>−1.5 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>2.0x</td>
+<td>200%</td>
+<td>−3.9 dB</td>
+<td>−2.7 dB</td>
+<td>−1.5 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>100%</td>
+<td>−5.4 dB</td>
+<td>−4.2 dB</td>
+<td>−3.0 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>200%</td>
+<td>−7.3 dB</td>
+<td>−5.1 dB</td>
+<td>−3.0 dB</td>
+</tr>
+<tr>
+<td>−100%</td>
+<td>2.0x</td>
+<td>100%</td>
+<td>+2.9 dB</td>
+<td>+2.2 dB</td>
+<td>+1.5 dB</td>
+</tr>
+<tr>
+<td>−100%</td>
+<td>2.0x</td>
+<td>200%</td>
+<td>+4.5 dB</td>
+<td>+3.0 dB</td>
+<td>+1.5 dB</td>
+</tr>
+<tr>
+<td>−100%</td>
+<td>4.0x</td>
+<td>100%</td>
+<td>+6.0 dB</td>
+<td>+4.5 dB</td>
+<td>+3.0 dB</td>
+</tr>
+<tr>
+<td>−100%</td>
+<td>4.0x</td>
+<td>200%</td>
+<td>+8.3 dB</td>
+<td>+5.6 dB</td>
+<td>+2.7 dB</td>
+</tr>
+</tbody>
+</table></div>
+<p>The last row is where the limit on what coming nearer may add starts to work (see Level), which is why its top figure is a little under 3 dB.</p>
+<p>The Proximity row in the window carries a line in italics saying what the distance is doing to the low mids at that moment: the change at 250 Hz measured against the top of the voice, so the level is left out of it, and with the boom's place round the head left out too. At the default settings it reads "-1.2 dB of low mid" with Distance at +100% and "+1.4 dB of low mid" at −100%. When the distance is making no difference to the low mids (the boom at the working distance, or Proximity or Amount at 0%) it reads "at the working distance".</p>
+<p>Proximity is set by hand and saved with the session. It is not an automation lane.</p>
+<h3 id="the-mics-aim">The mic's aim</h3>
+<p>A boom operator follows a move late. When the boom swings round the head, the mic's aim catches up a moment afterwards, and while it does, the mouth is off the mic's axis: the voice takes on the mic's off-axis colour, losing high end first, and drops a little in level. Body Language does this by itself. There is no control for it except Follow, which sets how quickly the operator catches up; with the boom still, the aim is on the mouth and there is no off-axis colour at all. A slow move is barely chased; a quick swing is heard as a brief dulling that clears as the aim arrives.</p>
+<h3 id="amount">Amount</h3>
+<p>Amount scales all of the movement at once, from 0% (no movement heard at all) to 300%. 100%, the default, is the natural amount: what a boom would hear. Below that the movement is gentler; above it, exaggerated. With the boom 90 degrees round, 300% takes about 4.4 dB off 1 kHz and 13.3 dB off 8 kHz, against 1.6 dB and 4.8 dB at 100%.</p>
+<p>Above 100% the high end also falls away as the boom goes further than the 0.6 metre working distance, as air would take it at much longer distances than a boom works at. It grows with how far above 100% Amount is set and with Proximity Balance: at 300% and Distance +100% about 1 dB more comes off 16 kHz than off 2 kHz, and at 0% Proximity Balance there is none. Coming nearer than the working distance does not add any.</p>
+<p>Below 100%, Amount also makes the sweep shallower, so at 0% the plug-in does nothing at all. Above 100% it does not deepen the sweep; Depth, in the Sweep row, does that.</p>
+<p>Amount does not scale the Close mic correction, which is a correction of the recording rather than part of the movement.</p>
+<h3 id="sweep">Sweep</h3>
+<p>Sweep is the cinematic move: a narrow notch that slides through the voice as the boom swings, the phasey swish a real boom makes as it passes a voice. It is there to add movement, so it cuts only while the notch itself is travelling. A move that takes the notch nowhere leaves the voice alone, and with everything still there is no notch at all, at any setting.</p>
+<p>Where the notch sits follows the boom round the head. On mic it is at the bottom of the Sweep Range (400 Hz by default); with the boom 90 degrees round it is at about 1.5 kHz, at 135 degrees about 4 kHz, and directly behind at the top of the range (6 kHz by default). Left and right are the same, so a swing out and back sweeps the notch up and back down. Distance carries it a little further: a full move to +100% lifts it a quarter of the way along the range (from 400 Hz to about 790 Hz on mic), and nearer brings it down by as much. It never leaves the range, so with the boom on mic coming nearer does not move it, and with the boom behind going further away does not.</p>
+<p>How deep it cuts follows how fast the notch is travelling through its range. Sweep (0% to 100%, default 0%) sets how much of the notch's Depth a move can reach. The notch travels fastest as the boom passes the side of the head: a swing through there at 240 degrees a second or faster reaches all of the Depth, and slower swings reach a share of it in proportion. Near on mic and near behind the same swing slides the notch much less, so it cuts much less. The notch comes in within about 10 milliseconds of starting to travel and fades over about a tenth of a second once it stops.</p>
+<p>This is what some moves cut at Sweep 100% and the default Depth of 4.5 dB, with Follow at its default. Each move is made at once unless it says otherwise. The last column is the other setting of Cuts, described below.</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Cuts only while the notch travels</th>
+<th>Cuts on any move of the boom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On mic to 90 degrees</td>
+<td>4.5 dB</td>
+<td>4.5 dB</td>
+</tr>
+<tr>
+<td>On mic to 90 degrees, over half a second</td>
+<td>3.3 dB</td>
+<td>3.4 dB</td>
+</tr>
+<tr>
+<td>On mic to 90 degrees, over two seconds</td>
+<td>0.8 dB</td>
+<td>0.8 dB</td>
+</tr>
+<tr>
+<td>On mic to 15 degrees</td>
+<td>0.5 dB</td>
+<td>4.1 dB</td>
+</tr>
+<tr>
+<td>On mic to 30 degrees</td>
+<td>1.9 dB</td>
+<td>4.5 dB</td>
+</tr>
+<tr>
+<td>150 degrees to directly behind</td>
+<td>3.1 dB</td>
+<td>4.5 dB</td>
+</tr>
+<tr>
+<td>170 degrees right to 170 degrees left, round the back</td>
+<td>0.5 dB</td>
+<td>4.4 dB</td>
+</tr>
+<tr>
+<td>Distance 0% to +100%, boom on mic</td>
+<td>2.6 dB</td>
+<td>4.5 dB</td>
+</tr>
+<tr>
+<td>Distance 0% to −100%, boom on mic</td>
+<td>nothing</td>
+<td>4.5 dB</td>
+</tr>
+<tr>
+<td>Distance 0% to +100%, boom behind</td>
+<td>nothing</td>
+<td>4.5 dB</td>
+</tr>
+</tbody>
+</table></div>
+<p>After the quick swing from on mic to 90 degrees the notch has gone again a little over half a second after the move began.</p>
+<h4 id="the-sweep-rows-values">The Sweep row's values</h4>
+<p>Double-click the word Sweep in the window and the row opens in place, with the rows beneath it moving down to make room. Double-click the word again to shut it. The row is shut each time the window opens.</p>
+<p><a class="shot" href="docs/open.gif" target="_blank" rel="noopener" data-caption="The Sweep row opened, its Depth dragged from 4.5 dB to 9 dB, and the same swing before and after"><img loading="lazy" src="docs/open.gif" alt="The Sweep row opened, its Depth dragged from 4.5 dB to 9 dB, and the same swing before and after"></a></p>
+<p><strong>Depth</strong> (0 dB to 12 dB, default 4.5 dB) is how deep the notch cuts when it is travelling at full speed with Sweep at 100%, and how deep a flick cuts.</p>
+<p><strong>Q</strong> (2 to 16, default 8) is how narrow the notch is. Measured where it cuts half its depth, it is about a seventh of an octave wide at 8, about half an octave at 2 (a broad dip rather than a notch) and about a fourteenth of an octave at 16.</p>
+<p><strong>Range</strong> is the two ends of the notch's travel, written as the low end "to" the high end. The low end (100 Hz to 2 kHz, default 400 Hz) is where the notch sits with the boom on mic; the high end (2 kHz to 12 kHz, default 6 kHz) is where it sits with the boom behind.</p>
+<p>Depth, Q and the two ends of the Range are written values, dragged like the others in the window: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click one to put it back to its default.</p>
+<p><strong>Cuts</strong> says what makes the notch cut. Click the line to change it.</p>
+<ul>
+<li>
+<em>only while the notch travels</em> is the default, described above. The depth follows how fast the notch is sliding through its range.</li>
+<li>
+<em>on any move of the boom</em> takes the depth from how fast the boom is moving, wherever the notch is. A move round the head at 240 degrees a second or faster reaches all of the Depth, anywhere round the head, and a full swing of Distance from nearest to furthest counts as much as half a turn round the head. So small moves near on mic, moves round the back, and moves in and out all cut, as the table shows. Where the notch has little or no distance to travel, what is heard is a dip that comes and goes almost in one place rather than a sweep. Use it when every move of the boom should be marked, or for a line played close to on mic where the travelling notch has little to do.</li>
+</ul>
+<p>Cuts does not change a Flick, which is its own pass at the full Depth.</p>
+<p>When any of these values is away from its default, a small brass dot sits beside the word Sweep, whether the row is open or shut, and <strong>Reset</strong> appears in brass at the right of the open row. Click Reset to put Depth, Q, both ends of the Range and Cuts back to their defaults.</p>
+<p>These values are saved with the session. They are set by hand and are not automation lanes. A host that lists a plug-in's parameters shows them as Sweep Depth, Sweep Q, Sweep Range Low, Sweep Range High and Sweep Cuts (When it travels, or On any move).</p>
+<p><a class="shot" href="docs/round.gif" target="_blank" rel="noopener" data-caption="The boom taken all the way round the head with Sweep on"><img loading="lazy" src="docs/round.gif" alt="The boom taken all the way round the head with Sweep on"></a></p>
+<h3 id="flick">Flick</h3>
+<p>Flick fires one sweep on its own: the notch runs from where it is to the far end of the Sweep Range and back, in a fifth of a second, at the full Sweep Depth whatever Sweep and Cuts are set to. With the notch in the lower half of its range (the boom round the front of the head) it runs up to the top; with the notch in the upper half (the boom round the back) it runs down to the bottom. The boom does not move.</p>
+<p>Flick is a momentary button. It fires as it goes down; holding it fires once, and it has to come up before it fires again. Pressed again while a pass is still running, it carries the pass on from the depth it has reached, toward the same end of the range, so the notch does not jump. Amount below 100% makes a flick shallower in the same way as the sweep: at 50% a flick cuts half of Sweep Depth. A session is always saved with Flick up, so it never opens held down.</p>
+<p><a class="shot" href="docs/flick.gif" target="_blank" rel="noopener" data-caption="Three Flicks: the sweep's ring goes to the far end of its range and back"><img loading="lazy" src="docs/flick.gif" alt="Three Flicks: the sweep's ring goes to the far end of its range and back"></a></p>
+<h3 id="input">Input</h3>
+<p>Input says how the dialogue was recorded.</p>
+<p><strong>Boom</strong> leaves the recording as it is. Use it for audio that already sounds like a boom at its working distance.</p>
+<p><strong>Close mic</strong> is for headset, lavalier and close booth recordings, which carry more low end and plosive weight than a boom would hear. It eases both off with two broad low shelves before any movement is applied. It is a gentle general correction, not a model of any particular microphone, and it is fixed: it does not change as the boom moves, and Amount does not scale it.</p>
+<p>The default is Boom.</p>
+<p><strong>Closeness</strong> is how much of the Close mic correction is applied, from 0% to 200%; the default is 100%. At 100% it takes about 4.4 dB off 50 Hz, 3.1 dB off 125 Hz, 1.8 dB off 250 Hz, 0.8 dB off 500 Hz and 0.2 dB off 1 kHz, and leaves the top end as it is. At 200% it takes about 8.5 dB off 50 Hz, 5.5 dB off 125 Hz, 3.1 dB off 250 Hz and 1.3 dB off 500 Hz. At 0% the correction is not applied at all. Closeness is shown on the Input line while Input is on Close mic, and does nothing with Boom input. Like Input, it is set by hand and is not an automation lane.</p>
+<h3 id="the-deep-dive-values">The deep-dive values</h3>
+<p>Each of the main controls has a few values that change how it behaves. They are part of the session and are saved with it, but they are set by hand rather than automated. Sweep's are in the window, in the Sweep row (see Sweep above). The ones below are not in the window; they are reached through the host's own parameter view (the generic plug-in editor, or the parameter list of an automation menu). Proximity, Closeness and the Sweep row's values, which are in the window, are in that list too.</p>
+<p><strong>Head Turn Balance</strong>, <strong>Off Axis Balance</strong> and <strong>Proximity Balance</strong> (Amount; each 0% to 200%, default 100%) set how much of Amount each part of the movement gets: the voice's loss of presence and air as the boom goes round the head, the mic's off-axis colour and level while its aim catches up, and the change of low end, low mids and level with distance (with, above 100% Amount, the loss of high end with distance). At 0% that part is not heard at all; at 200% it is twice as strong as the rest.</p>
+<p><strong>Distance Range</strong> (Distance; 1.25x to 4.0x, default 2.0x) is how many times nearer or further Distance at ±100% takes the boom. At 2.0x it goes from 0.3 metres at −100% to 1.2 metres at +100%; at 4.0x, from 0.15 metres to 2.4 metres, and the near end adds about 7.6 dB at 125 Hz and 6.0 dB at 250 Hz against 3.7 dB and 2.9 dB at 2.0x.</p>
+<p><strong>Follow</strong> (Turn and Distance; 0% to 100%, default 35%) is how the boom follows a move. Body Language does not jump to a new position: the boom travels there. Its swing round the head has a quick, fixed speed. The operator's aim, and the boom's moves in and out, are set by Follow: at 0% they follow tightly and settle without overshooting; towards 100% they lag, overshoot a little and are less steady while the boom is moving or away from on mic. A looser Follow means the aim catches up later, so a swing carries more of the off-axis colour. A still boom on mic is never unsteady.</p>
+<h3 id="level">Level</h3>
+<p>Moving away from the mic or off its axis makes a voice quieter, and a boom recording carries that. Most of it is compensated, so a move changes the character of the voice without pulling it out of the mix: about a quarter of the level change is left in, 1.5 dB for each doubling of the distance. Toward the mic the voice gets a little louder in the same proportion.</p>
+<p>However the controls are combined, what coming nearer adds (the low end and the level together) is limited. Up to 9 dB it is left alone; beyond that it is eased toward 15 dB and never passes it, so turning Amount, the balances, Proximity and Distance Range all the way up cannot make the plug-in add more than 15 dB at any frequency. At the default settings and 100% Amount the most it adds is about 4.7 dB, at the very bottom, well below the point where the limit does anything. Nothing limits what moving further away takes off.</p>
+<h3 id="changing-values">Changing values</h3>
+<p>Amount, Sweep, Proximity, Input, Closeness, the Sweep row's Depth and Q, and the deep-dive values glide to a new setting instead of jumping: most of the way in under a tenth of a second, and exactly there within about half a second. So they can be changed while the audio plays without a click, and switching Input fades the Close mic correction in or out. The two ends of the Sweep Range are the exception: they move the notch's travel straight away, which is only heard if they are changed while the notch is cutting. Cuts is one thing or the other and changes at once; with the boom still neither setting cuts, so changing it then is silent.</p>
+<h2 id="placing-a-close-recording-in-a-scene" class="k5">Placing a close recording in a scene</h2>
+<p>A line recorded at the mouth (ADR in a booth, a headset, a lavalier) has two things a voice further off in a scene does not: the low end a mic picks up that close, and a low-mid weight that says the mic is near. Three controls deal with them, and each does one job.</p>
+<p>Input says what the recording is. Set it to Close mic and the at-the-mouth low end is eased off before anything else happens. Closeness, which appears beside it, is how much: 100% is the place to start, with more for a mic that was very close or a voice with a lot of chest in it, and less for one that was already a hand's width away. This part is fixed. It does not move with the boom, and it is the same wherever the voice is put.</p>
+<p>Distance says where the voice is. Move the boom out and the voice gets a little quieter and loses low end and low mids, as it would have done with the mic that far away. How far out the end of the lane is depends on Distance Range: 1.2 metres at its default of 2.0x, 2.4 metres at 4.0x.</p>
+<p>Proximity says how strongly the low end and the low mids follow that distance. At 100% the tone changes by the natural amount; turn it up if the voice still sounds nearer than the picture, and down if moving it out thins it too much. It changes the tone only, so the level the voice loses with distance stays as Distance set it.</p>
+<p>With Input on Close mic at 100% Closeness, Amount at 100% and the boom on mic, this is what the plug-in takes off, the Close mic correction and the level included:</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Distance</th>
+<th>Distance Range</th>
+<th>Proximity</th>
+<th>125 Hz</th>
+<th>250 Hz</th>
+<th>500 Hz</th>
+<th>Top of the voice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0%</td>
+<td>any</td>
+<td>any</td>
+<td>−3.1 dB</td>
+<td>−1.8 dB</td>
+<td>−0.8 dB</td>
+<td>0 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>2.0x</td>
+<td>100%</td>
+<td>−6.6 dB</td>
+<td>−4.5 dB</td>
+<td>−2.9 dB</td>
+<td>−1.5 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>2.0x</td>
+<td>200%</td>
+<td>−8.4 dB</td>
+<td>−5.7 dB</td>
+<td>−3.5 dB</td>
+<td>−1.5 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>100%</td>
+<td>−9.9 dB</td>
+<td>−7.2 dB</td>
+<td>−5.0 dB</td>
+<td>−3.0 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>200%</td>
+<td>−13.2 dB</td>
+<td>−9.1 dB</td>
+<td>−5.9 dB</td>
+<td>−3.0 dB</td>
+</tr>
+</tbody>
+</table></div>
+<p>A way to work: set Input to Close mic and leave Closeness at 100%. Move the boom out until the voice is as far off as the picture, then listen to the low mids. If it still sounds as though the mic is at the mouth, raise Proximity; if the distance you want is further than the lane reaches, raise Distance Range. Come back to Closeness last, with the boom at the working distance, if the voice is boomy or thin before any move is made. The italic line on the Proximity row says how much low mid the distance is taking off as you go; it leaves the Close mic correction out, since that is not the distance's doing.</p>
+<p>Because Closeness is fixed and Distance is a lane, the voice can then be moved through the scene: automate Distance (and Turn) and the low end and low mids follow it, by as much as Proximity says.</p>
+<h2 id="automation" class="k6">Automation</h2>
+<p>Turn, Distance, Amount, Sweep and Flick are automation lanes. Record a pass by moving the boom on the dial (or the controls) while the host is writing automation, then edit and play it back as you would any other automation. Proximity, Input, Closeness, the Sweep row's values (Depth, Q, Range and Cuts) and the deep-dive values are not automatable.</p>
+<p>Flick is recorded as a short step. However quickly the button is clicked, it stays down for at least an eighth of a second, so every buffer size catches it and the lane holds a step that plays back as a flick each time it rises. A step drawn in by hand works the same way.</p>
+<p>The plug-in's movement is worked out from the lanes alone, on the host's timeline. A held position renders the same at any buffer size and offline, and playback started from any point renders the same whatever the buffer size: when playback starts somewhere else, or the host jumps to another place (a locate or a loop), the plug-in begins at the position the lanes give there rather than travelling from wherever it was, with no sweep left over from a move it did not hear. Automated moves are read once per host buffer, which is how hosts deliver automation, so at very large buffer sizes a move is followed in coarser steps and the result differs slightly from a render at a small buffer size. When the transport is stopped the plug-in still follows changes as you make them.</p>
+<p>The plug-in follows the host's position only while that position moves with the audio. If it does not (varispeed, a position held still during pre-roll, a host that reports it unevenly), the plug-in keeps its own time and the movement carries on at its normal speed, until the host's position runs with the audio again.</p>
+<p>Bypassing the plug-in passes the audio through untouched. It keeps following the lanes while bypassed, so when it is switched back on it carries on from where they are.</p>
+<h2 id="the-window" class="k1">The window</h2>
+<p>The window has the Polar dial on the left and the ledger on the right: Sweep with its Flick button, Proximity, Amount, and Input at the foot.</p>
+<h3 id="the-dial">The dial</h3>
+<p>The dial is a plan view of the actor's head, which stays at the centre facing up the dial; on mic is the top. Angles are marked round the rim from 0 in front to 180 behind. Distance from the centre stands for frequency: the rings are 125 Hz, 500 Hz, 2 kHz, 8 kHz and 16 kHz, from the inside out.</p>
+<p>The voice is drawn as five rings, one per band, each carrying that band's own waveform from the plug-in's output, so the picture moves with the sound. Each ring is pulled in where the voice loses that band, so the low rings stay round and the high rings lean forward, toward where the mouth faces. On a computer without suitable graphics support the voice is drawn as plain outlines instead, and everything else is the same.</p>
+<p>The boom is the brass capsule, pointing at the head from wherever it is. On the rim it is at the working distance; a third of the rim further out or further in is Distance at +100% or −100%. Its label gives the distance in metres. The line from the boom to the head carries a marker where it crosses each ring: what the mic is hearing in that band.</p>
+<p>While the sweep is cutting, a vermilion ring shows where the notch is on the dial's frequency scale, brighter the deeper it cuts, with its frequency beside it ("Sweep 2.4 kHz").</p>
+<p>The dial runs its own copy of the plug-in's follower, so the boom trails and settles on screen as it does in the sound, whether or not the transport is running.</p>
+<h3 id="moving-the-boom">Moving the boom</h3>
+<p>The boom is the dial's one handle. Drag anywhere on or round the dial and the boom goes to the pointer: all the way round the head, and nearer or further by how far from the centre the pointer is. Hold Shift to swing it round without changing its distance, or Alt to move it in and out without changing its angle. Double-click the dial to put the boom back on mic at the working distance. Moves made on the dial while the host is writing automation are written to the Turn and Distance lanes.</p>
+<h3 id="the-readouts">The readouts</h3>
+<p><strong>On mic</strong>, top left, is how much of the voice's presence and air is reaching the mic, as a percentage of on mic, level included. <strong>Boom</strong>, bottom left, is where the boom is round the head ("on mic", "40° right", "behind") with its distance in metres beneath. <strong>At the mic</strong>, bottom right, has a bar for each of the five bands showing how much of it arrives, level included; full height is on mic.</p>
+<p>The written values (the On mic percentage, the boom's angle and its distance, each marked with a dotted line) can be dragged like number boxes: up or to the right is more, and 200 points of travel is the whole range. Hold Shift for finer changes. Dragging On mic up brings the boom round toward the front on whichever side it is; dragging the angle takes it round the head, past 180 on to the other side; dragging the distance moves it in and out. Double-click a written value to put it back to on mic, or to the working distance.</p>
+<h3 id="the-ledger">The ledger</h3>
+<p><strong>Sweep</strong> is the top row: its slider and value, with the <strong>Flick</strong> button beside its name. Double-click the slider to go back to 0%. Press Flick to fire a flick; it is down for as long as it is held, and for at least an eighth of a second.</p>
+<p>Double-click the word Sweep to open the row. Its values appear beneath the slider on a lighter ground, and Proximity and Amount move down: Depth, Q and the Range as written values to drag, the Cuts line to click, and Reset at the right when anything has been changed. A brass dot beside the word Sweep says that something in the row is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under Sweep.</p>
+<p><strong>Proximity</strong> is the row under Sweep: its slider and value, and beside its name the line in italics that says what the distance is doing to the low mids ("-1.2 dB of low mid", or "at the working distance"). The line follows the boom as it moves. Double-click the slider to go back to 100%.</p>
+<p><strong>Amount</strong> is the large slider below, with its value above it, marked from Off through Natural to Exaggerated 300. Double-click it to go back to 100%.</p>
+<p><strong>Input</strong> is the line at the foot: click it to choose Boom or Close mic from the menu. With Close mic chosen, <strong>Closeness</strong> appears at the right of the line. It is dragged like the other written values: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click it to go back to 100%.</p>
+<h2 id="not-built-yet" class="k2">Not built yet</h2>
+<p>These parts of Body Language do not exist yet:</p>
+<ul>
+<li>
+<strong>Space</strong>, the early reflections of the room the actor is in, with the actor in the open, by a wall or in a corner.</li>
+<li>
+<strong>Auto</strong>, movement the plug-in makes by itself from a seed, so that it repeats exactly.</li>
+<li>
+<strong>Fingerprint</strong>.</li>
+<li><strong>Presets.</strong></li>
+<li>The <strong>Strip</strong> view, and the rest of the deep-dive values in the window (the three balances, Distance Range and Follow).</li>
+</ul>
+<h2 id="updates" class="k3">Updates</h2>
+<p>When its window opens, Body Language looks for a newer version, at most once a day (a day it could not reach the internet counts). If there is one, a line appears at the top right of the window: "Version 1.0.1 is available", with Download, Skip and Later, and What's new when there are release notes to read.</p>
+<p>Download opens the installer's page in your browser; run the installer with your host closed. Skip hides that version for good, and a later version is still offered. Later hides the line until your host is next started.</p>
+<p>The check reads one small public file listing the latest version. It sends nothing about you, your licence or your computer, and the plug-in never downloads or installs anything by itself. Offline, or behind a firewall, it stays silent. Versions before 1.0.0 are testers' builds and are also told about beta versions.</p>
+
+  </main>
+</div>
+<div class="foot">
+  <span>Made by Samuel Justice</span>
+  <a href="https://samueljustice.github.io/plugins/">Sammy J's Plugins</a>
+  <a href="https://www.sweetjusticesound.com" target="_blank" rel="noopener">www.sweetjusticesound.com</a>
+</div>
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Pictures">
+  <button class="close" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous picture">&larr;</button>
+  <button class="next" aria-label="Next picture">&rarr;</button>
+  <figure><img alt=""></figure>
+  <div class="vbar"><span class="caption"></span><span class="count"></span></div>
+</div>
+<script>
+// Clicking a picture opens it here, with every picture in the manual to step through.
+(function () {
+  var viewer = document.getElementById('viewer'), img = viewer.querySelector('img');
+  var caption = viewer.querySelector('.caption'), count = viewer.querySelector('.count');
+  var shots = [], at = 0, opener = null;
+  function show(i) {
+    at = (i + shots.length) % shots.length;
+    img.src = shots[at].href;
+    img.alt = shots[at].dataset.caption || '';
+    caption.textContent = shots[at].dataset.caption || '';
+    count.textContent = shots.length > 1 ? (at + 1) + ' / ' + shots.length : '';
+  }
+  function close() {
+    viewer.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    img.removeAttribute('src');
+    if (opener) opener.focus();
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a.shot');
+    if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;   // modified clicks still open the file
+    e.preventDefault();
+    opener = link;
+    shots = Array.prototype.slice.call(document.querySelectorAll('a.shot'));
+    viewer.classList.toggle('single', shots.length < 2);
+    viewer.classList.add('open');
+    document.documentElement.style.overflow = 'hidden';
+    show(shots.indexOf(link));
+    viewer.querySelector('.close').focus();
+  });
+  viewer.querySelector('.close').addEventListener('click', close);
+  viewer.querySelector('.prev').addEventListener('click', function () { show(at - 1); });
+  viewer.querySelector('.next').addEventListener('click', function () { show(at + 1); });
+  viewer.addEventListener('click', function (e) { if (e.target === viewer || e.target.tagName === 'FIGURE') close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!viewer.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(at - 1);
+    else if (e.key === 'ArrowRight') show(at + 1);
+  });
+  var x0 = null;
+  viewer.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+  });
+})();
+// Marks, in the contents list, the part of the manual you are reading.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var heads = links.map(function (a) { return document.getElementById(decodeURIComponent(a.hash.slice(1))); });
+  function mark() {
+    var at = 0;
+    heads.forEach(function (h, i) { if (h && h.getBoundingClientRect().top < 140) at = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === at); });
+  }
+  var waiting = false;
+  addEventListener('scroll', function () { if (!waiting) { waiting = true; requestAnimationFrame(function () { waiting = false; mark(); }); } }, { passive: true });
+  mark();
+})();
+</script>
+</body>
+</html>

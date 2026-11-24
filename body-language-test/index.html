@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Body Language Test Version</title>
+<meta name="description" content="The test version of Body Language, for the people testing it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Published by body-language's release workflow to sammyj-downloads/body-language-test/. The download
+     links, version and dates come from ../body-language.json (its beta channel) when the page opens. */
+  :root {
+    --bg: #0d241e; --panel: #12302a; --ink: #efe9da; --dim: #b4bfb2; --line: #24453c; --brass: #cdae70; --red: #ec6a45;
+    --display: "Fraunces", Georgia, serif; --body: "Inter", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(1000px 420px at 70% -60px, rgba(205, 174, 112, .10) 0, transparent 70%), var(--bg);
+    color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  main { max-width: 46rem; margin: 0 auto; padding: 56px 20px 72px; display: flex; flex-direction: column; gap: 34px; }
+  .label { font: 500 11px/1.5 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin: 0; }
+  h1 { font: 600 clamp(44px, 9vw, 84px)/1 var(--display); margin: 10px 0 0; letter-spacing: -.01em; }
+  h1::after { content: ""; display: block; width: 120px; height: 2px; margin-top: 20px; background: linear-gradient(90deg, var(--brass) 0 70%, var(--red) 70%); }
+  h2 { font: 600 24px/1.2 var(--display); margin: 0 0 10px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--brass); text-underline-offset: 3px; }
+  .lede { font-size: 19px; }
+  .get { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 14px; }
+  .button { display: inline-block; padding: 14px 22px; border-radius: 999px; background: var(--brass); color: #10231d; text-decoration: none;
+    font: 600 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--brass); }
+  .button.alt { background: transparent; color: var(--ink); border-color: var(--dim); }
+  .button:hover { filter: brightness(1.1); }
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0; }
+  .facts dt { font: 500 11px/1.9 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .facts dd { margin: 0; }
+  .expires { color: var(--brass); }
+  .ended { color: var(--red); }
+  section { border-top: 1px solid var(--line); padding-top: 26px; }
+  ul { margin: 0 0 12px; padding-left: 1.2em; }
+  li { margin: .3em 0; }
+  li::marker { color: var(--brass); }
+  .small { font-size: 14px; color: var(--dim); }
+  .missing { color: var(--dim); }
+  @media (max-width: 480px) { .facts { grid-template-columns: 1fr; gap: 0; } .facts dd { margin-bottom: 8px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="label">Sammy J / Test version, for testers only</p>
+    <h1>Body Language</h1>
+  </header>
+
+  <div>
+    <p class="lede">Thanks for testing Body Language. It makes close-recorded dialogue move the way a boom
+      recording of a moving actor does. This page always has the newest test version.</p>
+    <div class="get">
+      <a class="button" id="get-mac" href="#">Download for macOS</a>
+      <a class="button alt" id="get-win" href="#">Download for Windows</a>
+    </div>
+    <dl class="facts">
+      <dt>Version</dt><dd id="version" class="missing">Looking it up…</dd>
+      <dt>Built</dt><dd id="released">–</dd>
+      <dt>Works until</dt><dd id="expires">–</dd>
+      <dt>Needs</dt><dd id="needs">–</dd>
+    </dl>
+  </div>
+
+  <section>
+    <h2>The manual</h2>
+    <p>What it is for, what each control does, and what we most want to hear about:
+      <a href="manual/">read the manual</a>.</p>
+  </section>
+
+  <section>
+    <h2>Installing</h2>
+    <ul>
+      <li><strong>macOS:</strong> open the installer. It puts the AU, VST3 and, when it's included, the AAX
+        for Pro Tools in the usual folders, for every user. It's signed and notarised by Apple.</li>
+      <li><strong>Windows:</strong> run the installer. It puts the VST3 (and the AAX, when it's included) in
+        Common Files. It isn't code-signed yet, so Windows may warn that it's from an unknown publisher:
+        choose <em>More info</em>, then <em>Run anyway</em>.</li>
+      <li>A new test version installs over the old one. The plug-in tells you when a newer one is out.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Before you start</h2>
+    <p>This is an unfinished test version. Each one works for 60 days from the day it was built; after that
+      it passes the sound through untouched and says so in its window, and the newest version from this
+      page carries on. Please don't pass the download on.</p>
+    <p>Send what you find to Samuel Justice, the same way this test version reached you.</p>
+    <p class="small">By Samuel Justice. <a href="https://samueljustice.github.io/plugins/">Sammy J's free plug-ins</a>.</p>
+  </section>
+</main>
+<script>
+(function () {
+  function set(id, text, cls) { var el = document.getElementById(id); el.textContent = text; el.className = cls || ''; }
+  function day(s) {
+    var d = new Date(s + 'T12:00:00');
+    return isNaN(d) ? s : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  fetch('../body-language.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw r; return r.json(); })
+    .then(function (m) {
+      var c = (m.channels || {}).beta || (m.channels || {}).stable;
+      if (!c) throw new Error('no build');
+      set('version', c.version);
+      set('released', c.released ? day(c.released) : '–');
+      if (c.testExpires) {
+        var ended = new Date(c.testExpires + 'T23:59:59') < new Date();
+        set('expires', ended ? 'Ended on ' + day(c.testExpires) + '. A newer one is coming.' : day(c.testExpires), ended ? 'ended' : 'expires');
+      }
+      var os = c.minimumOS || {};
+      set('needs', 'macOS ' + (os.macOS || '12') + ' or later, or Windows ' + (os.windows || '10') + ' or later (64-bit)');
+      var d = c.downloads || {};
+      if (d.macOS) document.getElementById('get-mac').href = d.macOS; else document.getElementById('get-mac').style.display = 'none';
+      if (d.windows) document.getElementById('get-win').href = d.windows; else document.getElementById('get-win').style.display = 'none';
+    })
+    .catch(function () {
+      set('version', 'No test version is up yet. Check back soon.', 'missing');
+      document.querySelector('.get').style.display = 'none';
+    });
+})();
+</script>
+</body>
+</html>

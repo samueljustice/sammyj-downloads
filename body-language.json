@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "product": "body-language",
+  "channels": {
+    "beta": {
+      "version": "0.1.1",
+      "released": "2026-11-24",
+      "minimumOS": {
+        "macOS": "12.0",
+        "windows": "10"
+      },
+      "downloads": {
+        "macOS": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.1/BodyLanguage-0.1.1-macOS-Installer.pkg",
+        "windows": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.1/BodyLanguage-0.1.1-Windows-Installer.exe"
+      },
+      "sha256": {
+        "macOS": "f81c58a15cc298df1347aa296c979e2250cb76a7939fcfd330824cc1b1a51b94",
+        "windows": "597056448db984b732c03bc75f3b6aaf74d964e8e8ce94db925d620ceccbe5c4"
+      },
+      "notes": "https://samueljustice.github.io/sammyj-downloads/body-language-test/manual/",
+      "testExpires": "2027-01-23"
+    }
+  }
+}
