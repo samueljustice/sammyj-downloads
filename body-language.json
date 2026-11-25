@@ -3,22 +3,22 @@
   "product": "body-language",
   "channels": {
     "beta": {
-      "version": "0.1.2",
-      "released": "2026-11-24",
+      "version": "0.1.5",
+      "released": "2026-11-25",
       "minimumOS": {
         "macOS": "12.0",
         "windows": "10"
       },
       "downloads": {
-        "macOS": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.2/BodyLanguage-0.1.2-macOS-Installer.pkg",
-        "windows": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.2/BodyLanguage-0.1.2-Windows-Installer.exe"
+        "macOS": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.5/BodyLanguage-0.1.5-macOS-Installer.pkg",
+        "windows": "https://github.com/samueljustice/sammyj-downloads/releases/download/body-language-v0.1.5/BodyLanguage-0.1.5-Windows-Installer.exe"
       },
       "sha256": {
-        "macOS": "c6ac3c532ffb74bff432205406eea1a2c47b7d86564c1ab38fe2413cfb6dcf66",
-        "windows": "cb62d4d38013f11b691c572441d369d90cbecfb2bb0585258b235e6355099c16"
+        "macOS": "fe654102955e93292b4e6b6f2e7be37e0765afc8ac686027f09d9439e6cbaffd",
+        "windows": "d6bc7495866f8faf7c5022dabca071735e822d98999157baae7d5ea3011574d4"
       },
       "notes": "https://samueljustice.github.io/sammyj-downloads/body-language-test/manual/",
-      "testExpires": "2027-01-23"
+      "testExpires": "2027-01-24"
     }
   }
 }

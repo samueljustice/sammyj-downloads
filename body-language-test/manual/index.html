@@ -125,25 +125,27 @@
   <header class="title">
     <p class="strap">Sammy J / Dialogue movement</p>
     <h1>Body Language</h1>
-    <p class="version"><a class="button" href="https://samueljustice.github.io/sammyj-downloads/body-language-test/">Get the test version</a><span>Test version 0.1.2, works until 2027-01-23</span><span>The manual</span></p>
+    <p class="version"><a class="button" href="https://samueljustice.github.io/sammyj-downloads/body-language-test/">Get the test version</a><span>Test version 0.1.5, works until 2027-01-24</span><span>The manual</span></p>
   </header>
-  <nav class="toc" aria-label="Contents"><ol><li><a href="#what-it-is-for">What it is for</a></li><li><a href="#while-it-is-in-testing">While it is in testing</a></li><li><a href="#where-to-put-it">Where to put it</a></li><li><a href="#the-controls">The controls</a></li><li><a href="#placing-a-close-recording-in-a-scene">Placing a close recording in a scene</a></li><li><a href="#automation">Automation</a></li><li><a href="#the-window">The window</a></li><li><a href="#not-built-yet">Not built yet</a></li><li><a href="#updates">Updates</a></li></ol></nav>
+  <nav class="toc" aria-label="Contents"><ol><li><a href="#what-it-is-for">What it is for</a></li><li><a href="#while-it-is-in-testing">While it is in testing</a></li><li><a href="#where-to-put-it">Where to put it</a></li><li><a href="#the-controls">The controls</a></li><li><a href="#placing-a-close-recording-in-a-scene">Placing a close recording in a scene</a></li><li><a href="#automation">Automation</a></li><li><a href="#presets">Presets</a></li><li><a href="#the-window">The window</a></li><li><a href="#not-built-yet">Not built yet</a></li><li><a href="#updates">Updates</a></li></ol></nav>
   <main class="doc">
 
 <p>By Samuel Justice. A Sammy J plug-in.</p>
-<p>Body Language makes close-recorded dialogue move the way a boom recording of a moving actor does. A mocap headset, an ADR booth or a voice-over mic hears the voice from the same place whatever the actor does. A boom does not: as the actor turns, the mic ends up beside or behind the mouth and the voice loses some of its presence and air; while the operator chases the move the mic is briefly off axis and takes on its off-axis colour; as the actor comes nearer or moves away, the low end, the low mids and the level change with them. Body Language puts those changes back, from where you put the boom.</p>
-<p>It is subtle by default. At its natural setting a move should sound like the recording was always made that way, not like an effect. Sweep, the one deliberately cinematic part, is off until you turn it up.</p>
+<p>Body Language makes close-recorded dialogue move the way a boom recording of a moving actor does. A lavalier on a performance-capture suit, an ADR booth or a voice-over mic hears the voice from the same place whatever the actor does. A boom does not: as the actor turns, the mic ends up beside or behind the mouth and the voice loses some of its presence and air; while the operator chases the move the mic is briefly off axis and takes on its off-axis colour; as the actor comes nearer or moves away, the low end and the low mids change with them. Body Language puts those changes back, from where you put the boom. It changes the colour of the voice and leaves its level alone, since the level is the mixer's to set; a tick-box brings the level changes in too, for those who want them.</p>
+<p>It is subtle by default. At its natural setting a move should sound like the recording was always made that way, not like an effect. Sweep, the one deliberately cinematic part, is off until you turn it up, and so is Space, which adds the room's first reflections under a voice that is turned away from the mic. So is Auto, which moves the actor by itself.</p>
 <p>The plug-in has no latency, so it can be used live, in Pro Tools or any other host, without delay compensation.</p>
 <p><a class="shot" href="docs/turn.gif" target="_blank" rel="noopener" data-caption="The boom swung round the head with Sweep on: the voice's rings, the markers on the line to the mic, and the sweep's ring following the move"><img src="docs/turn.gif" alt="The boom swung round the head with Sweep on: the voice's rings, the markers on the line to the mic, and the sweep's ring following the move"></a></p>
 <h2 id="what-it-is-for" class="k1">What it is for</h2>
-<p>Body Language is for dialogue in game cinematics and trailers: performance capture from headsets and face cameras, ADR, and voice-over recorded in a booth. Recordings like these are clean and close, and they do not move. Production sound does, because a boom operator is following an actor who turns, walks and leans, and a good part of what makes dialogue sit in a scene is that movement.</p>
+<p>Body Language is for dialogue in game cinematics and trailers: performance capture, which is mostly recorded on lavaliers worn on the head rig (with a boom on the stage as well), ADR, and voice-over recorded in a booth. Recordings like these are clean and close, and they do not move. Production sound does, because a boom operator is following an actor who turns, walks and leans, and a good part of what makes dialogue sit in a scene is that movement.</p>
 <p>The usual way to put it back is by hand, with automated EQ and a narrow notch swept back and forth across a line. That works, and takes minutes a line. Body Language is meant to do the same job in seconds: move the boom, or turn the actor's head, and hear what a boom would have heard.</p>
+<p>A boom also hears the room. When an actor turns away from the mic, less of the voice reaches it directly and more of what it hears has come off the nearest surfaces a few milliseconds later. Space adds those first reflections under the direct voice, for an actor in the open, by a wall or in a corner. It is not a reverb: the mix's own reverbs still follow the plug-in.</p>
+<p>Not every line is worth performing. A game can have hundreds or thousands of lines of dialogue, and nobody has time to move the boom by hand through every one. Auto moves the actor by itself: a slow drift through the line, and now and then a turn of the head in a gap between phrases. It is restrained on purpose, because movement that sounds random on dialogue reads as a fault, and it repeats exactly: the same line, from the same place, moves the same way every time.</p>
 <p>It is a stylised tool and is judged by ear. The curves come from how a voice and a boom microphone behave, but the aim is dialogue that sounds right in a mix, not a simulation of a particular room, actor or microphone.</p>
 <p>Three things it is trying to get right:</p>
 <ul>
 <li>At its natural setting a move sounds as though the line was recorded that way. Nothing should read as an equaliser being moved.</li>
-<li>With nothing moved it does nothing at all. With Input on Boom and the boom on mic, what comes out is what went in, bit for bit. That is also why Amount, Sweep and Proximity make no difference to a still boom on mic: they shape a move, and there is no move to shape.</li>
-<li>Everything can be pushed. Amount goes to three times natural, and Sweep and Flick are there for the deliberate, cinematic moves.</li>
+<li>With nothing moved it does nothing at all. With Input on Boom or Lavalier, Auto at 0 and the boom on mic, what comes out is what went in, bit for bit. That is also why Amount, Sweep, Space and Proximity make no difference to a still boom on mic at the working distance: they shape a move, and there is no move to shape. Auto is the one control that makes a move of its own, so with Auto up the plug-in is no longer doing nothing at rest.</li>
+<li>Everything can be pushed. Amount goes to five times natural, Sweep and Flick are there for the deliberate, cinematic moves, and Space puts the actor by a wall or in a corner.</li>
 </ul>
 <h2 id="while-it-is-in-testing" class="k2">While it is in testing</h2>
 <p>This is a test version. It is not finished, and the sound of every move is a first setting that has not yet been tuned by ear on real projects. That is what testing is for.</p>
@@ -154,9 +156,15 @@
 <li>
 <strong>Fast moves.</strong> A quick move is darker for a moment than where it settles, as an operator catches up. Does that help, or is it too much?</li>
 <li>
-<strong>Distance and Proximity.</strong> Does a voice moved further away sound further away? On close-recorded ADR in particular, does it lose enough of its low-mid weight? Which settings of Input, Closeness, Distance and Proximity did you end up with?</li>
+<strong>Distance and Proximity.</strong> Does a voice moved further away sound further away? On close-recorded ADR in particular, does it lose enough of its low-mid weight? Which settings of Input, Closeness, Distance and Proximity did you end up with? Did you tick Level follows the movement, and if so, why?</li>
 <li>
 <strong>Sweep and Flick.</strong> Do they do what you would do by hand with a notch? The notch cuts only while it is travelling: does that put the movement where you want it, or did you set it to cut on any move? Are the depth, the width and the range right as they come, and which of the Sweep row's values did you change? Is a Flick the right length?</li>
+<li>
+<strong>Space.</strong> Does it place the voice in a room when the actor turns away? Is it too much or too little at the settings you used, and which Placement, Size and Tone did you settle on? Does it ever sound phasey, or like an echo?</li>
+<li>
+<strong>Auto.</strong> Do the head's turns fall where you would have put them? Is it too much or too little at the settings you used, and which Auto, Head turns, Range and take did you settle on? Did it ever turn across a word, or miss a gap you thought was plain? Is a pass the same each time you play it from the same place?</li>
+<li>
+<strong>Presets.</strong> Which of the built-in presets did you start from, and how far from it did you go? A preset of your own that you keep coming back to is worth sending as it is (the file, from the presets folder).</li>
 <li>
 <strong>Playing it.</strong> Is the boom comfortable to move with a mouse, and the head? Can you get to the value you want, by dragging or by typing it? Is anything confusing, or in the way?</li>
 <li>
@@ -172,37 +180,38 @@
 <p>Send what you find to Samuel Justice, by the same route this test version reached you.</p>
 <p>A test version works for a limited time. The line under the plug-in's name says the last day it works. After that day it passes audio through untouched and says so in the same place; it never mutes anything, a session with it in still opens, and its settings are kept. A newer test version, or the finished plug-in, picks up where it left off.</p>
 <h2 id="where-to-put-it" class="k3">Where to put it</h2>
-<p>Put Body Language on the dialogue track itself, before any reverb or room sends, so the room hears the voice as it would have reached the mic. Anything that should treat the voice as recorded (clean-up, de-essing, a fixed EQ) can go before it.</p>
+<p>Put Body Language on the dialogue track itself, before any reverb or room sends, so the room hears the voice as it would have reached the mic. That holds with Space in use: Space is only the first reflections round the actor, with no tail, and the reverbs after it are still what give the scene its room. Anything that should treat the voice as recorded (clean-up, de-essing, a fixed EQ) can go before it. Auto listens for the gaps in what reaches the plug-in, so it hears them after anything placed before it.</p>
 <p>It is made for mono dialogue tracks. On a stereo track it treats the two channels as two mono channels that share one position, so a stereo pair stays matched.</p>
-<p>With Boom input and nothing moved, the plug-in passes the audio through exactly as it came in, bit for bit. It changes nothing until something moves, and that holds with Sweep turned all the way up: the sweep only cuts during a move.</p>
+<p>With Boom or Lavalier input, Auto at 0 and nothing moved, the plug-in passes the audio through exactly as it came in, bit for bit. It changes nothing until something moves, and that holds with Sweep turned all the way up: the sweep only cuts during a move. It holds with Space turned all the way up too: on mic at the working distance nothing is sent to the room, so nothing comes back. Auto is different: turned up, it moves the actor itself, so the voice is changed even with nothing performed or automated.</p>
 <h2 id="the-controls" class="k4">The controls</h2>
 <h3 id="turn">Turn</h3>
 <p>Turn is where the boom is round the actor, seen from above, in degrees. 0 is in front of the actor; with the head facing ahead (Head at 0) that is on mic, the mic in front of the mouth and aimed at it. Positive values go round to the actor's right, negative to their left, and 180 is directly behind. The range is −180 to 180 and the default is 0.</p>
-<p>The further round from where the mouth faces the mic is, the more of the voice's presence and air it loses, the way a voice beams forward more at higher frequencies and the head shadows the highs. The change is a broad tilt with no corner anywhere, and it leaves the low end almost alone. With the mic 90 degrees round, at 100% Amount, the voice loses about 0.9 dB at 500 Hz, 1.6 dB at 1 kHz, 2.5 dB at 2 kHz, 4.8 dB at 8 kHz and 6 dB at 16 kHz. Directly behind, it loses about 1.7 dB at 500 Hz, 3.1 dB at 1 kHz, 4.9 dB at 2 kHz, 9.4 dB at 8 kHz and 11.9 dB at 16 kHz. Left and right are the same.</p>
+<p>The further round from where the mouth faces the mic is, the more of the voice's presence and air it loses, the way a voice beams forward more at higher frequencies and the head shadows the highs. The change is a broad tilt with no corner anywhere, and it leaves the low end almost alone. With the mic 90 degrees round, at 100% Amount, the voice loses about 1.3 dB at 500 Hz, 2.4 dB at 1 kHz, 3.7 dB at 2 kHz, 7.0 dB at 8 kHz and 8.8 dB at 16 kHz. Directly behind, it loses about 2.4 dB at 500 Hz, 4.5 dB at 1 kHz, 7.0 dB at 2 kHz, 13.6 dB at 8 kHz and 17.3 dB at 16 kHz. Left and right are the same. This is a change of colour only: the level of the voice stays where it was unless Level follows the movement is ticked (see Level).</p>
+<p>The natural setting is set against what is known of a real voice. Measured in an anechoic room at a metre, speech is about 7 dB quieter behind the head than in front (A-weighted), and the difference grows from about 1 kHz upward (DPA Microphones' summary of the measurements of Chu and Warnock). A boom in a room also hears the voice by way of the room's reflections, so a turn costs it less than that, and what the plug-in is after is the colour of a turn, which reads clearly well before the whole of that loss. So 100% is set under the anechoic figures.</p>
 <p>The boom goes round the head the short way. From 170 degrees right to 170 degrees left it travels 20 degrees round the back, never 340 degrees round the front. That applies to the values the plug-in is given: an automation ramp drawn from 170 to −170 passes through every value in between, including 0, so it goes round the front. To go round the back in a drawn lane, take it up to 180 and carry on from −180.</p>
 <h3 id="head">Head</h3>
 <p>Head is which way the actor's head faces, seen from above, in degrees: 0 (the default) is ahead, positive values turn it to the actor's right, negative to their left, and 180 is facing away. The range is −180 to 180.</p>
-<p>What the voice loses depends on the angle between where the mouth faces and where the mic is, so on mic is wherever the head faces: Head and Turn both at 40 degrees right is on mic, and the plug-in does nothing. Turning the head 70 degrees to the right with the boom in front gives the voice the same tone as swinging the boom 70 degrees to the left of a head facing ahead, and the sweep's notch sits in the same place for both.</p>
+<p>What the voice loses depends on the angle between where the mouth faces and where the mic is, so on mic is wherever the head faces: Head and Turn both at 40 degrees right is on mic, and with Auto at 0 the plug-in does nothing. Turning the head 70 degrees to the right with the boom in front gives the voice the same tone as swinging the boom 70 degrees to the left of a head facing ahead, and the sweep's notch sits in the same place for both. The figures under Turn, and what the natural setting is set against, apply to a turn of the head in the same way.</p>
 <p>The difference is in the move. A head turns at its own quick, fixed speed, and the boom stays where it is, so a head turn carries none of the mic's off-axis colour: the operator has nothing to catch up with. A swing of the boom does (see The mic's aim). Use Head when the actor turns away from a mic that stays put, and Turn when the boom moves round them. Follow does not change how the head turns.</p>
 <p>The head turns the short way round, as the boom does: from 170 degrees right to 170 degrees left it goes round the back.</p>
 <p><a class="shot" href="docs/head.gif" target="_blank" rel="noopener" data-caption="The actor turning away to the left and then to the right, with the boom staying in front"><img loading="lazy" src="docs/head.gif" alt="The actor turning away to the left and then to the right, with the boom staying in front"></a></p>
 <h3 id="distance">Distance</h3>
 <p>Distance is how far the boom is from the mouth: −100% is nearer, +100% is further, and 0% (the default) is a normal boom working distance of 0.6 metres. How far ±100% goes is set by Distance Range; at its default, −100% is 0.3 metres and +100% is 1.2 metres.</p>
-<p>Nearer, the low end and the low mids grow (proximity effect) and the voice gets a little louder; further, they thin and the voice gets a little quieter. At the default settings, −100% adds about 3.7 dB at 125 Hz, 2.9 dB at 250 Hz, 2.2 dB at 500 Hz, 1.8 dB at 1 kHz and 1.5 dB at the top of the voice, and +100% takes away about as much (3.5 dB at 125 Hz, 2.8 dB at 250 Hz, 2.1 dB at 500 Hz, 1.7 dB at 1 kHz and 1.5 dB at the top). The 1.5 dB at the top is the level change, which is the same at every frequency; see Level for why it is small. The rest is the change of tone, and Proximity sets how much of that there is.</p>
+<p>Nearer, the low end and the low mids grow (proximity effect); further, they thin. At the default settings, −100% adds about 2.2 dB at 125 Hz, 1.4 dB at 250 Hz, 0.7 dB at 500 Hz and 0.3 dB at 1 kHz, and leaves the top of the voice as it is; +100% takes away about as much (2.0 dB at 125 Hz, 1.3 dB at 250 Hz, 0.6 dB at 500 Hz and 0.2 dB at 1 kHz). That is a change of tone only, and Proximity sets how much of it there is. The level does not change unless Level follows the movement is ticked; then the voice is also 1.5 dB louder at −100% and 1.5 dB quieter at +100%, at every frequency (see Level).</p>
 <p><a class="shot" href="docs/distance.gif" target="_blank" rel="noopener" data-caption="The boom moved away from the voice and back in close, with the Proximity row saying what the distance is doing to the low mids"><img loading="lazy" src="docs/distance.gif" alt="The boom moved away from the voice and back in close, with the Proximity row saying what the distance is doing to the low mids"></a></p>
 <h3 id="proximity">Proximity</h3>
-<p>Proximity is how strongly the low end and the low mids follow Distance, from 0% to 200%. 100%, the default, is the natural amount. At 0% a move in or out changes only the level; at 200% the tone changes twice as much. It does nothing with the boom at the working distance, and it does not change the level.</p>
-<p>The change reaches from the bottom of the voice up through the low mids, in a broad tilt that has all but gone by 2 kHz. At 100%, each halving of the distance adds about 2.9 dB at 50 Hz, 2.2 dB at 125 Hz, 1.4 dB at 250 Hz, 0.7 dB at 500 Hz and 0.3 dB at 1 kHz, on top of the level change described under Level. Each doubling takes away about as much: 2.8 dB at 50 Hz, 2.0 dB at 125 Hz, 1.3 dB at 250 Hz, 0.6 dB at 500 Hz and 0.2 dB at 1 kHz.</p>
-<p>With the level included, this is what Distance at either end does to the low mids, at 100% Amount with the boom on mic:</p>
+<p>Proximity is how strongly the low end and the low mids follow Distance, from 0% to 200%. 100%, the default, is the natural amount. At 0% a move in or out changes nothing (or, with Level follows the movement ticked, only the level); at 200% the tone changes twice as much. It does nothing with the boom at the working distance, and it does not change the level.</p>
+<p>The change reaches from the bottom of the voice up through the low mids, in a broad tilt that has all but gone by 2 kHz. At 100%, each halving of the distance adds about 2.9 dB at 50 Hz, 2.2 dB at 125 Hz, 1.4 dB at 250 Hz, 0.7 dB at 500 Hz and 0.3 dB at 1 kHz. Each doubling takes away about as much: 2.8 dB at 50 Hz, 2.0 dB at 125 Hz, 1.3 dB at 250 Hz, 0.6 dB at 500 Hz and 0.2 dB at 1 kHz.</p>
+<p>This is what Distance at either end does to the low end and the low mids, at 100% Amount with the boom on mic. It is the tone only: with Level follows the movement left off, as it is by default, the top of the voice does not change at all.</p>
 <div class="scroll"><table>
 <thead>
 <tr>
 <th>Distance</th>
 <th>Distance Range</th>
 <th>Proximity</th>
+<th>125 Hz</th>
 <th>250 Hz</th>
 <th>500 Hz</th>
-<th>Top of the voice</th>
 </tr>
 </thead>
 <tbody>
@@ -210,47 +219,47 @@
 <td>+100%</td>
 <td>2.0x</td>
 <td>100%</td>
-<td>−2.8 dB</td>
-<td>−2.1 dB</td>
-<td>−1.5 dB</td>
+<td>−2.0 dB</td>
+<td>−1.3 dB</td>
+<td>−0.6 dB</td>
 </tr>
 <tr>
 <td>+100%</td>
 <td>2.0x</td>
 <td>200%</td>
 <td>−3.9 dB</td>
-<td>−2.7 dB</td>
-<td>−1.5 dB</td>
+<td>−2.4 dB</td>
+<td>−1.2 dB</td>
 </tr>
 <tr>
 <td>+100%</td>
 <td>4.0x</td>
 <td>100%</td>
-<td>−5.4 dB</td>
-<td>−4.2 dB</td>
-<td>−3.0 dB</td>
+<td>−3.9 dB</td>
+<td>−2.4 dB</td>
+<td>−1.2 dB</td>
 </tr>
 <tr>
 <td>+100%</td>
 <td>4.0x</td>
 <td>200%</td>
-<td>−7.3 dB</td>
-<td>−5.1 dB</td>
-<td>−3.0 dB</td>
+<td>−7.1 dB</td>
+<td>−4.3 dB</td>
+<td>−2.1 dB</td>
 </tr>
 <tr>
 <td>−100%</td>
 <td>2.0x</td>
 <td>100%</td>
-<td>+2.9 dB</td>
 <td>+2.2 dB</td>
-<td>+1.5 dB</td>
+<td>+1.4 dB</td>
+<td>+0.7 dB</td>
 </tr>
 <tr>
 <td>−100%</td>
 <td>2.0x</td>
 <td>200%</td>
-<td>+4.5 dB</td>
+<td>+4.6 dB</td>
 <td>+3.0 dB</td>
 <td>+1.5 dB</td>
 </tr>
@@ -258,30 +267,32 @@
 <td>−100%</td>
 <td>4.0x</td>
 <td>100%</td>
-<td>+6.0 dB</td>
-<td>+4.5 dB</td>
+<td>+4.6 dB</td>
 <td>+3.0 dB</td>
+<td>+1.5 dB</td>
 </tr>
 <tr>
 <td>−100%</td>
 <td>4.0x</td>
 <td>200%</td>
-<td>+8.3 dB</td>
-<td>+5.6 dB</td>
-<td>+2.7 dB</td>
+<td>+9.4 dB</td>
+<td>+6.4 dB</td>
+<td>+3.4 dB</td>
 </tr>
 </tbody>
 </table></div>
-<p>The last row is where the limit on what coming nearer may add starts to work (see Level), which is why its top figure is a little under 3 dB.</p>
-<p>The Proximity row in the window carries a line in italics saying what the distance is doing to the low mids at that moment: the change at 250 Hz measured against the top of the voice, so the level is left out of it, and with the boom's place round the head left out too. At the default settings it reads "-1.2 dB of low mid" with Distance at +100% and "+1.4 dB of low mid" at −100%. When the distance is making no difference to the low mids (the boom at the working distance, or Proximity or Amount at 0%) it reads "at the working distance".</p>
+<p>In the last row the limit on what coming nearer may add has begun to work (see Level), so it is a few tenths of a decibel short of what it would otherwise be. With Level follows the movement ticked, every figure in the table moves by the level change as well, which is the same at every frequency: 1.5 dB at 2.0x and 3.0 dB at 4.0x, quieter at +100% and louder at −100%. The one exception is the last row, where the limit holds the top of the voice to 2.7 dB louder rather than 3.0 dB.</p>
+<p>The Proximity row in the window carries a line in italics saying what the distance is doing to the low mids at that moment: the change at 250 Hz measured against the top of the voice, so any level change is left out of it, and with the boom's place round the head left out too. At the default settings it reads "-1.2 dB of low mid" with Distance at +100% and "+1.4 dB of low mid" at −100%. When the distance is making no difference to the low mids (the boom at the working distance, or Proximity or Amount at 0%) it reads "at the working distance".</p>
 <p>Proximity is set by hand and saved with the session. It is not an automation lane.</p>
 <h3 id="the-mics-aim">The mic's aim</h3>
-<p>A boom operator follows a move late. When the boom swings round the head, the mic's aim catches up a moment afterwards, and while it does, the mouth is off the mic's axis: the voice takes on the mic's off-axis colour, losing high end first, and drops a little in level. Body Language does this by itself. There is no control for it except Follow, which sets how quickly the operator catches up; with the boom still, the aim is on the mouth and there is no off-axis colour at all. A slow move is barely chased; a quick swing is heard as a brief dulling that clears as the aim arrives.</p>
+<p>A boom operator follows a move late. When the boom swings round the head, the mic's aim catches up a moment afterwards, and while it does, the mouth is off the mic's axis: the voice takes on the mic's off-axis colour, losing high end first. With Level follows the movement ticked it also drops a little in level, by a quarter of what the mic itself loses off axis; left off, the colour changes and the level does not. Body Language does this by itself. There is no control for it except Follow, which sets how quickly the operator catches up; with the boom still, the aim is on the mouth and there is no off-axis colour at all. A slow move is barely chased; a quick swing is heard as a brief dulling that clears as the aim arrives.</p>
 <h3 id="amount">Amount</h3>
-<p>Amount scales all of the movement at once, from 0% (no movement heard at all) to 300%. 100%, the default, is the natural amount: what a boom would hear. Below that the movement is gentler; above it, exaggerated. With the boom 90 degrees round, 300% takes about 4.4 dB off 1 kHz and 13.3 dB off 8 kHz, against 1.6 dB and 4.8 dB at 100%.</p>
-<p>Above 100% the high end also falls away as the boom goes further than the 0.6 metre working distance, as air would take it at much longer distances than a boom works at. It grows with how far above 100% Amount is set and with Proximity Balance: at 300% and Distance +100% about 1 dB more comes off 16 kHz than off 2 kHz, and at 0% Proximity Balance there is none. Coming nearer than the working distance does not add any.</p>
+<p>Amount scales all of the movement at once, from 0% (no movement heard at all) to 500%. 100%, the default, is the natural amount: what a boom would hear. Below that the movement is gentler; above it, exaggerated. With the boom 90 degrees round, 500% takes about 8.8 dB off 1 kHz and 28.2 dB off 8 kHz, against 2.4 dB and 7.0 dB at 100%.</p>
+<p>The top of that range is for effect, and it costs words. Speech research gives the band round 2 kHz the most weight of any in how well speech is understood (the band-importance function of the Speech Intelligibility Index, ANSI S3.5), so a voice turned right away from the mic at a high Amount loses its consonants first. Facing dead away, the plug-in takes about 7.0 dB off 2 kHz at 100%, 12.2 dB at 200% and 21.2 dB at 500%.</p>
+<p>Above 100% the high end also falls away as the boom goes further than the 0.6 metre working distance, as air would take it at much longer distances than a boom works at. It grows with how far above 100% Amount is set and with Proximity Balance: at Distance +100%, about 1 dB more comes off 16 kHz than off 2 kHz at 300% and about 2.2 dB more at 500%, and at 0% Proximity Balance there is none. Coming nearer than the working distance does not add any.</p>
 <p>Below 100%, Amount also makes the sweep shallower, so at 0% the plug-in does nothing at all. Above 100% it does not deepen the sweep; Depth, in the Sweep row, does that.</p>
-<p>Amount does not scale the Close mic correction, which is a correction of the recording rather than part of the movement.</p>
+<p>Amount scales what is sent to Space with the rest of the movement: at 0% nothing is sent and there are no reflections, and above 100% a turn of the head sends more. Head Turn Balance and Proximity Balance scale their parts of it in the same way (see Space).</p>
+<p>Amount does not scale the Close mic correction, which is a correction of the recording rather than part of the movement. With Level follows the movement ticked, it scales the level changes with the rest.</p>
 <h3 id="sweep">Sweep</h3>
 <p>Sweep is the cinematic move: a narrow notch that slides through the voice as the boom swings, the phasey swish a real boom makes as it passes a voice. It is there to add movement, so it cuts only while the notch itself is travelling. A move that takes the notch nowhere leaves the voice alone, and with everything still there is no notch at all, at any setting.</p>
 <p>Where the notch sits follows the boom round the head, measured from where the head faces. On mic it is at the bottom of the Sweep Range (400 Hz by default); with the boom 90 degrees round it is at about 1.5 kHz, at 135 degrees about 4 kHz, and directly behind at the top of the range (6 kHz by default). Left and right are the same, so a swing out and back sweeps the notch up and back down. Distance carries it a little further: a full move to +100% lifts it a quarter of the way along the range (from 400 Hz to about 790 Hz on mic), and nearer brings it down by as much. It never leaves the range, so with the boom on mic coming nearer does not move it, and with the boom behind going further away does not.</p>
@@ -371,28 +382,151 @@
 <p>Flick fires one sweep on its own: the notch runs from where it is to the far end of the Sweep Range and back, in a fifth of a second, at the full Sweep Depth whatever Sweep and Cuts are set to. With the notch in the lower half of its range (the boom round the front of the head) it runs up to the top; with the notch in the upper half (the boom round the back) it runs down to the bottom. The boom does not move.</p>
 <p>Flick is a momentary button. It fires as it goes down; holding it fires once, and it has to come up before it fires again. Pressed again while a pass is still running, it carries the pass on from the depth it has reached, toward the same end of the range, so the notch does not jump. Amount below 100% makes a flick shallower in the same way as the sweep: at 50% a flick cuts half of Sweep Depth. A session is always saved with Flick up, so it never opens held down.</p>
 <p><a class="shot" href="docs/flick.gif" target="_blank" rel="noopener" data-caption="Three Flicks: the sweep's ring goes to the far end of its range and back"><img loading="lazy" src="docs/flick.gif" alt="Three Flicks: the sweep's ring goes to the far end of its range and back"></a></p>
+<h3 id="space">Space</h3>
+<p>Space is the room round the actor: the first reflections of the voice off the nearest surfaces, added under the direct voice. An actor facing the mic is heard almost entirely directly. One who has turned away from it, or who is standing by a wall or in a corner, is heard partly by way of the room, a few milliseconds late, and that is a good part of what says the actor has turned and not simply got duller. Space (0% to 100%, default 0%) is how much of that comes back. At 0% it is off.</p>
+<p>It is not a reverb. It is a pattern of reflections that is over within 20 milliseconds at its default Size, with no tail, so the mix's own reverbs still follow the plug-in and still give the scene its room. The pattern approach follows what Michael Carnes of Exponential Audio has described of the early sections of his reverbs: dozens of reflections, decorrelated from one another, which a few values stretch and shape. Here there are 32, half of one polarity and half of the other so that they do not pile up on the low end of the direct voice, each rolled off a little, and the later ones smeared slightly so that they do not comb against each other.</p>
+<p><a class="shot" href="docs/space.gif" target="_blank" rel="noopener" data-caption="The Space row open: the actor turns to face a wall, then the placement changes to a corner"><img loading="lazy" src="docs/space.gif" alt="The Space row open: the actor turns to face a wall, then the placement changes to a corner"></a></p>
+<p>What is sent to the room is the part of the voice that does not go to the mic. That is all of what the head turn takes from the direct sound (the presence and air described under Turn), and with it a share of the whole voice that grows as the mouth turns from the mic and as the boom goes further than the working distance. With the mouth on mic and the boom at the working distance or nearer, both are nothing, so nothing is sent and nothing comes back. That is why the plug-in still passes the audio through bit for bit at rest with Space at 100%. Amount scales what is sent, with Head Turn Balance on the head's part and Proximity Balance on the distance's.</p>
+<p>Space follows the head by itself. The further the mouth is turned from the mic, the more is sent, so the reflections come up as the direct voice goes down. Which reflections carry the weight changes too: facing the mic it is the first ones, and as the mouth turns away it moves to the later ones, as the voice reaches the mic by the longer ways round. More comes back when the mouth faces the placement's surfaces, and less when it faces away from them. A move of the boom further off sends a little more and shortens the gap before the first reflection.</p>
+<p>This is how far under the direct sound of the same pose the reflections are, at Space 100% and the default settings, with the boom in front at the working distance and the head turned to the right. It was measured on noise; on a voice the reflections are lower still, because a voice has less top end and it is mostly top end that a turn sends to the room.</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Head, from the mic</th>
+<th>In the open</th>
+<th>By a wall</th>
+<th>In a corner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 degrees</td>
+<td>45 dB under</td>
+<td>44 dB under</td>
+<td>44 dB under</td>
+</tr>
+<tr>
+<td>60 degrees</td>
+<td>31 dB under</td>
+<td>28 dB under</td>
+<td>30 dB under</td>
+</tr>
+<tr>
+<td>90 degrees</td>
+<td>22 dB under</td>
+<td>18 dB under</td>
+<td>20 dB under</td>
+</tr>
+<tr>
+<td>120 degrees</td>
+<td>17 dB under</td>
+<td>11 dB under</td>
+<td>12 dB under</td>
+</tr>
+<tr>
+<td>180 degrees</td>
+<td>14 dB under</td>
+<td>7 dB under</td>
+<td>5 dB under</td>
+</tr>
+</tbody>
+</table></div>
+<p>Space at 50% is 6 dB under these. The corner is behind the actor and to their left, so with the head turned to the left, toward it, more comes back than the table shows. With the mouth on mic and Distance at +100%, the reflections are about 38 dB under the direct sound in the open and by a wall, and about 36 dB under in a corner; at Distance 0% or −100% there are none. All of these are with Level follows the movement left off, as it is by default.</p>
+<p>However the controls are combined, the reflections stay under the direct voice. Amount above 100% takes the direct voice down as it sends more to the room, so past a point what is sent is turned down to keep the reflections about 4 dB under the voice, by the plug-in's own reckoning of the two. That point is only reached with the controls pushed together: Space and Amount well up, the mouth turned right away from the mic and toward the surfaces.</p>
+<p>The sweep's notch passes through the reflections as it does through the direct sound, so a sweep or a Flick is heard in both. Space adds no latency: the direct voice is never delayed. Once nothing is being sent, the room empties in about 150 milliseconds and Space stops.</p>
+<h4 id="the-space-rows-values">The Space row's values</h4>
+<p>Double-click the word Space in the window and the row opens in place, with the rows beneath it moving down to make room. Double-click the word again to shut it. Only one of the Sweep, Space and Auto rows is open at a time, so opening one shuts the others, and all three are shut each time the window opens.</p>
+<p><strong>Placement</strong> is where the actor is standing. Click it to step through the three, which are weights on one set of reflections: the reflections never move in time from one placement to another, and a change cross-fades them over about half a second.</p>
+<ul>
+<li>
+<em>in the open</em> has few reflections, ten of them, spread out and late. It is the quietest of the three and a little brighter, and it makes no difference which way the actor faces in the room.</li>
+<li>
+<em>by a wall</em> is the default: a strong early group of reflections and a thinner run after it. The wall is behind the actor as they face ahead, so most comes back when the head is turned right round to face it, and least when it faces ahead.</li>
+<li>
+<em>in a corner</em> has many reflections that come at once and are soon over. With the mouth toward it, it is the strongest of the three, and it is a little darker. The corner is behind the actor and to their left.</li>
+</ul>
+<p><strong>Size</strong> (50% to 200%, default 100%) is how long the pattern lasts: 18 milliseconds at 100%, 9 milliseconds at 50% and 36 milliseconds at 200%, after a gap of about 1.2 milliseconds at 100% that grows with Size and is a little shorter the further off the boom is. A corner uses the first two thirds of that length. A bigger Size also makes the later reflections darker.</p>
+<p><strong>Tone</strong> (0% to 100%, default 50%) is how bright the reflections are. Each one is rolled off above a corner frequency. By a wall, that frequency at the start of the pattern is 1.8 kHz at 0%, about 4.6 kHz at 50% and 12 kHz at 100% (a little higher in the open and a little lower in a corner), and it falls along the pattern, so later reflections are darker than the first.</p>
+<p>Size and Tone are written values, dragged like the others in the window: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click one to type it, and Alt-click one to put it back to its default.</p>
+<p>Beneath them a strip draws the reflections as they arrive after the voice, for where the head and the boom are now. Each reflection is one hairline, up or down by its polarity and as tall as it is strong against the strongest, and dimmer the more it is rolled off. The strip is 40 milliseconds across. It shows the shape of the pattern, not its level: the line in italics beside the word Space gives that.</p>
+<p>While the row is open the dial draws the room plan (see The dial, under The window): the walls of the placement, and the ways the voice reaches the mic by them. The plan and the strip are two views of the same reflections. The plan shows where they come from, and the strip when they arrive.</p>
+<p>When Placement, Size or Tone is away from its default, a small brass dot sits beside the word Space, whether the row is open or shut, and <strong>Reset</strong> appears in brass at the right of the open row. Click Reset to put all three back.</p>
+<p>These values are saved with the session. They are set by hand and are not automation lanes. A host that lists a plug-in's parameters shows the lane as Space and the row's values as Space Size, Space Tone and Space Placement (Open, Wall or Corner).</p>
+<h3 id="auto">Auto</h3>
+<p>Auto is movement the plug-in makes by itself. It is for the lines nobody has time to perform: a game can have hundreds of them, and a line that does not move at all sits in a scene no better than the recording did. Auto (0% to 100%, default 0%) is how much it moves. At 0% it is off.</p>
+<p>It is restrained on purpose. Movement that sounds random on dialogue reads as a fault, as though the mic were loose or the operator lost, so Auto does two things only:</p>
+<ul>
+<li>A slow drift through the line. The head's drift wanders on to a new place about every eight seconds, the boom's more slowly still, and neither jumps.</li>
+<li>Now and then a turn of the head, taken in a gap between phrases and never across a word.</li>
+</ul>
+<p>It is mostly the head and hardly the boom. At Auto 100% and the default Range of 45 degrees, the head's turns go up to 45 degrees to either side and its drift up to about 10 degrees, while the boom drifts round the actor by about 3 degrees and in and out by about 6% of Distance. The turns, the head's drift and the boom's drift round the actor grow and shrink with Range; the drift in and out does not. Auto scales all of them, so at 50% each is half as wide.</p>
+<p><a class="shot" href="docs/auto.gif" target="_blank" rel="noopener" data-caption="The Auto row open: the head turns in the gaps between phrases"><img loading="lazy" src="docs/auto.gif" alt="The Auto row open: the head turns in the gaps between phrases"></a></p>
+<h4 id="how-a-turn-is-taken">How a turn is taken</h4>
+<p>The timeline is cut into stretches, as many a minute as Head turns is set to (6 seconds each at the default of 10 a minute), and each stretch has a way for the head to face. About a third of them face as the lane has it, so a turn there brings the head back rather than taking it further; the rest face somewhere between the full Range to the left and the full Range to the right. Head turns is how many turns are on offer, not how many are heard: some are small, some take the head back where it was, and a stretch that never has a gap in it passes without its turn.</p>
+<p>When a new stretch begins, its turn waits for a gap. Once a gap is heard the head turns, at an even pace, most of the way in about a quarter of a second, and then through the same follower as a performed turn of the head. It moves only while it is quiet. If a word comes before the turn is finished, the head eases to a stop where it has got to and finishes the turn in the next gap, which can be a short one: once a turn has been taken, the head moves again after about a twentieth of a second without speech.</p>
+<h4 id="how-it-hears-a-gap">How it hears a gap</h4>
+<p>Auto listens to what reaches the plug-in and follows its level closely, up within a few milliseconds and down within a few tens of milliseconds; the first thing it hears is taken at its level straight away. Beside the level it keeps two slower things: the voice's own recent peaks, and the floor under the voice, which is the lowest the level has been over the last 2.4 seconds (room tone, hum, a music bed: whatever is left between the words). It counts as speech while the level stands more than 8 dB over that floor and is within 26 dB of the recent peaks. Anything else is a gap.</p>
+<p>There is no fixed threshold, so a quiet recording is heard as well as a loud one. A whisper after a shout is soon heard too: once the voice stops the peaks fall back 12 dB a second, and while something that is not yet counted as speech stands clear of the floor they fall 80 dB a second, so they come down to the whisper within a fraction of a second.</p>
+<p>Because the floor is the lowest level of the last 2.4 seconds, a steady sound becomes the floor once it has lasted that long. Noise or hum with no voice over it is then not taken for speech, and on such a recording turns are taken as their stretches begin. The same can happen inside a phrase: a steady note held for longer than 2.4 seconds, such as a long sung or called vowel, can be taken for the floor once it has lasted that long, and a turn taken while it is still sounding. Ordinary speech has dips between its syllables, which keep the floor under it. Digital silence is never speech.</p>
+<p>A gap has to last a little over a quarter of a second to be used. When a word ends, the level Auto follows falls about 217 dB a second (4.3 dB in each 20 milliseconds) while the peaks it is measured against fall 2.5 dB a second, so from a word at its peak it takes about 0.12 seconds to drop the 26 dB that count as no longer speaking. The gap then has to run another 0.14 seconds before a turn is taken: about 0.26 seconds of quiet in all. It is a little less after a word that has already tailed away, or with a voice that stands less than 34 dB over the floor, where the 8 dB over the floor is reached first. A breath or a short pause inside a phrase is not long enough.</p>
+<h4 id="repeatable">Repeatable</h4>
+<p>All of it comes from the take and the place on the timeline. The same line, from the same place, with the same take, moves the same way every time, at any buffer size. A pass started somewhere else starts with the head already where that stretch has it, as though it had been turned there in an earlier gap, and after a locate or a loop it is the same: Auto begins again at the new place as a pass started there would, with nothing carried over from what it heard before. Turning Auto up from 0 starts it the same way.</p>
+<p>What Auto hears is part of it, so a pass is the same as long as the audio coming in is the same. Change the edit, or anything placed before the plug-in, and the gaps can fall differently.</p>
+<h4 id="the-take">The take</h4>
+<p>The take is which of the movements Auto makes: the drift, and which way each stretch faces. Click for another and everything Auto does changes, while the line and the settings stay the same. The take also sets the boom's unsteadiness while it follows a move (see Follow). A new take chosen while the audio plays moves the head to the new take's drift at the head's own speed, whatever the voice is doing; a turn it brings waits for a gap like any other.</p>
+<h4 id="with-the-lanes-and-the-other-stages">With the lanes and the other stages</h4>
+<p>Auto adds to the lanes. Its movement goes in with whatever is performed or automated on Turn, Distance and Head, and all of it passes through the same follower, so it moves with one feel. A head turned 40 degrees to the right on the lane drifts and turns about there, and the stretches that face as the lane has it bring it back to 40 degrees right.</p>
+<p>Everything else hears Auto's movement as it hears a performed one. Amount and the balances scale what it does to the voice. A turn of the head sweeps the notch, as a performed turn does, so with Sweep up an Auto turn is heard as a sweep. With Space up a turn sends more to the room, so the reflections come up as the head turns away.</p>
+<h4 id="the-auto-rows-values">The Auto row's values</h4>
+<p>Double-click the word Auto in the window and the row opens in place, with the rows beneath it moving down to make room. Double-click the word again to shut it. Only one row of the ledger is open at a time, and all of them are shut each time the window opens.</p>
+<p><strong>Head turns</strong> (2 to 30 a minute, default 10) is how many turns are on offer each minute: how long each stretch of the timeline is. A change takes effect at once. It does not bring a turn of its own: the head keeps the facing it had (finishing a turn it had begun), a turn that was waiting for a gap is let go, and the stretches are counted afresh from there, so the next turn comes when the next stretch begins.</p>
+<p><strong>Range</strong> (10 to 120 degrees, default 45) is how wide the widest turn is, to either side, at Auto 100%. It also sets the width of the drift of the head and of the boom round the actor.</p>
+<p>Head turns and Range are written values, dragged like the others in the window: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click one to type it, and Alt-click one to put it back to its default.</p>
+<p><strong>Take</strong> is the number of the take, with "click for another" beside it. Click the line for the next take. Takes run from 1 to 9999 and go round to 1 after the last. The first is take 1.</p>
+<p>When Head turns or Range is away from its default, a small brass dot sits beside the word Auto, whether the row is open or shut, and <strong>Reset</strong> appears in brass at the right of the open row. Click Reset to put both back. It does not change the take.</p>
+<p>Auto is an automation lane. Head turns and Range are saved with the session, are set by hand and are not automation lanes. A host that lists a plug-in's parameters shows them as Auto, Auto Rate and Auto Range. The take is saved with the session too, but it is not a parameter, so a host does not list it and it cannot be automated.</p>
+<p>Two parts of Auto are not built yet. Its movement cannot be written into the host's Turn, Distance and Head lanes to edit by hand. And it does not look ahead in an offline render: it hears a gap as it happens, as it does in playback, so an offline render is the same as playback, not better placed.</p>
 <h3 id="input">Input</h3>
-<p>Input says how the dialogue was recorded.</p>
+<p>Input says how the dialogue was recorded. There are three choices: Boom, Lavalier and Close mic.</p>
 <p><strong>Boom</strong> leaves the recording as it is. Use it for audio that already sounds like a boom at its working distance.</p>
-<p><strong>Close mic</strong> is for headset, lavalier and close booth recordings, which carry more low end and plosive weight than a boom would hear. It eases both off with two broad low shelves before any movement is applied. It is a gentle general correction, not a model of any particular microphone, and it is fixed: it does not change as the boom moves, and Amount does not scale it.</p>
+<p><strong>Lavalier</strong> is for a lavalier worn on the head, which is how performance capture is mostly recorded. It is corrected exactly as Boom is, which is to say not at all; it is there so that the choice is plain. On a performance-capture stage the lavalier is usually on the head rig (the arm of the face camera, the helmet, or the forehead), and published comparisons put a mic there close to one a metre in front of the mouth: it needs little or no correction, and what it lacks against a boom is the movement, which is what the rest of the plug-in adds. A lavalier is an omnidirectional mic, so it has none of the low end that a directional mic picks up close to.</p>
+<p><strong>Close mic</strong> is for a directional mic worked close: a booth or ADR mic near the mouth, or a headset mic at the cheek. These carry more low end and plosive weight than a boom would hear. It eases both off with two broad low shelves before any movement is applied. It is a gentle general correction, not a model of any particular microphone, and it is fixed: it does not change as the boom moves, and Amount does not scale it.</p>
+<p>None of the three suits a lavalier worn on the chest. There the voice loses much of its presence, between about 2 kHz and 4 kHz, and that wants a correction of its own that this version does not have. A chest lavalier also hears the head turn already, so a head turn added on top of it is heard twice: with such a recording, move the boom and leave Head alone.</p>
 <p>The default is Boom.</p>
-<p><strong>Closeness</strong> is how much of the Close mic correction is applied, from 0% to 200%; the default is 100%. At 100% it takes about 4.4 dB off 50 Hz, 3.1 dB off 125 Hz, 1.8 dB off 250 Hz, 0.8 dB off 500 Hz and 0.2 dB off 1 kHz, and leaves the top end as it is. At 200% it takes about 8.5 dB off 50 Hz, 5.5 dB off 125 Hz, 3.1 dB off 250 Hz and 1.3 dB off 500 Hz. At 0% the correction is not applied at all. Closeness is shown on the Input line while Input is on Close mic, and does nothing with Boom input. Like Input, it is set by hand and is not an automation lane.</p>
+<p><strong>Closeness</strong> is how much of the Close mic correction is applied, from 0% to 200%; the default is 100%. At 100% it takes about 4.4 dB off 50 Hz, 3.1 dB off 125 Hz, 1.8 dB off 250 Hz, 0.8 dB off 500 Hz and 0.2 dB off 1 kHz, and leaves the top end as it is. At 200% it takes about 8.5 dB off 50 Hz, 5.5 dB off 125 Hz, 3.1 dB off 250 Hz and 1.3 dB off 500 Hz. At 0% the correction is not applied at all. Closeness is shown on the Input line only while Input is on Close mic, and does nothing with Boom or Lavalier input. Like Input, it is set by hand and is not an automation lane.</p>
 <h3 id="the-deep-dive-values">The deep-dive values</h3>
-<p>Each of the main controls has a few values that change how it behaves. They are part of the session and are saved with it, but they are set by hand rather than automated. Sweep's are in the window, in the Sweep row (see Sweep above). The ones below are not in the window; they are reached through the host's own parameter view (the generic plug-in editor, or the parameter list of an automation menu). Proximity, Closeness and the Sweep row's values, which are in the window, are in that list too.</p>
-<p><strong>Head Turn Balance</strong>, <strong>Off Axis Balance</strong> and <strong>Proximity Balance</strong> (Amount; each 0% to 200%, default 100%) set how much of Amount each part of the movement gets: the voice's loss of presence and air as the boom goes round the head, the mic's off-axis colour and level while its aim catches up, and the change of low end, low mids and level with distance (with, above 100% Amount, the loss of high end with distance). At 0% that part is not heard at all; at 200% it is twice as strong as the rest.</p>
-<p><strong>Distance Range</strong> (Distance; 1.25x to 4.0x, default 2.0x) is how many times nearer or further Distance at ±100% takes the boom. At 2.0x it goes from 0.3 metres at −100% to 1.2 metres at +100%; at 4.0x, from 0.15 metres to 2.4 metres, and the near end adds about 7.6 dB at 125 Hz and 6.0 dB at 250 Hz against 3.7 dB and 2.9 dB at 2.0x.</p>
-<p><strong>Follow</strong> (Turn and Distance; 0% to 100%, default 35%) is how the boom follows a move. Body Language does not jump to a new position: the boom travels there. Its swing round the head has a quick, fixed speed. The operator's aim, and the boom's moves in and out, are set by Follow: at 0% they follow tightly and settle without overshooting; towards 100% they lag, overshoot a little and are less steady while the boom is moving or away from on mic. A looser Follow means the aim catches up later, so a swing carries more of the off-axis colour. A still boom on mic is never unsteady.</p>
+<p>Each of the main controls has a few values that change how it behaves. They are part of the session and are saved with it, but they are set by hand rather than automated. All of them are in the window, in the row of the control they belong to: Sweep's in the Sweep row (see Sweep above), Space's in the Space row (see Space above), Auto's in the Auto row (see Auto above), Distance Range in the Proximity row, and the three balances and Follow in the Amount row. Double-click a row's name to open it. They are also in the host's own parameter view (the generic plug-in editor, or the parameter list of an automation menu), with Proximity, Closeness and the other rows' values; the take is not, since it is not a parameter.</p>
+<p><strong>Head Turn Balance</strong>, <strong>Off Axis Balance</strong> and <strong>Proximity Balance</strong> (Amount; each 0% to 200%, default 100%) set how much of Amount each part of the movement gets: the voice's loss of presence and air as the boom goes round the head, the mic's off-axis colour while its aim catches up, and the change of low end and low mids with distance (with, above 100% Amount, the loss of high end with distance). With Level follows the movement ticked, each also scales its own part of the level change: the drop as the head turns away, the off-axis drop and the change with distance. At 0% that part is not heard at all; at 200% it is twice as strong as the rest. Head Turn Balance and Proximity Balance also scale what the head and the distance send to Space. In the Amount row they are Head turn, Off axis and Proximity.</p>
+<p><strong>Distance Range</strong> (Distance; 1.25x to 4.0x, default 2.0x) is how many times nearer or further Distance at ±100% takes the boom. At 2.0x it goes from 0.3 metres at −100% to 1.2 metres at +100%; at 4.0x, from 0.15 metres to 2.4 metres, and the near end adds about 4.6 dB at 125 Hz and 3.0 dB at 250 Hz against 2.2 dB and 1.4 dB at 2.0x (with Level follows the movement ticked, 3.0 dB more at 4.0x and 1.5 dB more at 2.0x, at every frequency). In the Proximity row it is Range.</p>
+<p><strong>Follow</strong> (Turn and Distance; 0% to 100%, default 35%) is how the boom follows a move. Body Language does not jump to a new position: the boom travels there. Its swing round the head has a quick, fixed speed. The operator's aim, and the boom's moves in and out, are set by Follow: at 0% they follow tightly and settle without overshooting; towards 100% they lag, overshoot a little and are less steady while the boom is moving or away from on mic. A looser Follow means the aim catches up later, so a swing carries more of the off-axis colour. A still boom on mic is never unsteady. The way the boom wanders while it is unsteady comes from Auto's take, and is the same each time for one take.</p>
+<h4 id="the-proximity-rows-values">The Proximity row's values</h4>
+<p>Double-click the word Proximity in the window and the row opens in place, with Amount moving down to make room. Double-click the word again to shut it.</p>
+<p><strong>Range</strong> is Distance Range. Beneath it, the Distance line says in italics how near and how far Distance at −100% and +100% take the boom at that setting, from the working distance of 0.6 metres: "0.30 m to 1.20 m" at 2.0x, "0.15 m to 2.40 m" at 4.0x.</p>
+<p>When Range is away from its default, a small brass dot sits after the word Proximity, whether the row is open or shut, and <strong>Reset</strong> appears in brass at the right of the open row. Click Reset to put it back. Proximity itself is not one of the row's values, so it neither shows the dot nor is put back by Reset.</p>
+<h4 id="the-amount-rows-values">The Amount row's values</h4>
+<p>Double-click the word Amount in the window and its values open beneath Amount's scale and the Level follows the movement tick-box, down to the Input line. Nothing moves to make room for them. Double-click the word again to shut it.</p>
+<p><strong>Head turn</strong>, <strong>Off axis</strong> and <strong>Proximity</strong> are the three balances, Head Turn Balance, Off Axis Balance and Proximity Balance. <strong>Follow</strong> is on the line beneath, and after its value a word in italics says what its ends mean: "tight" at 0% and "loose" at 100%. Between the two nothing is written.</p>
+<p>When any of the four is away from its default, a small brass dot sits after the word Amount, whether the row is open or shut, and <strong>Reset</strong> appears in brass at the right of the open row. Click Reset to put all four back. It does not change Amount.</p>
+<p>The values of both rows are written values, dragged like the others in the window: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click one to type it, and Alt-click one to put it back to its default.</p>
 <h3 id="level">Level</h3>
-<p>Moving away from the mic or off its axis makes a voice quieter, and a boom recording carries that. Most of it is compensated, so a move changes the character of the voice without pulling it out of the mix: about a quarter of the level change is left in, 1.5 dB for each doubling of the distance. Toward the mic the voice gets a little louder in the same proportion.</p>
-<p>However the controls are combined, what coming nearer adds (the low end and the level together) is limited. Up to 9 dB it is left alone; beyond that it is eased toward 15 dB and never passes it, so turning Amount, the balances, Proximity and Distance Range all the way up cannot make the plug-in add more than 15 dB at any frequency. At the default settings and 100% Amount the most it adds is about 4.7 dB, at the very bottom, well below the point where the limit does anything. Nothing limits what moving further away takes off.</p>
+<p>By default a move does not change the level of the voice at all. Moving away from the mic, off its axis or turning the head away makes a real voice quieter, and a boom recording carries that, but the level of a line is the mixer's to set. What a boom adds that the mixer cannot easily put back is the colour of a move, so that is what the plug-in changes. With the tick-box off, the level stage is exactly 0 dB whatever moves: nothing for Distance, nothing while the mic's aim catches up, nothing for a turn of the head.</p>
+<p><strong>Level follows the movement</strong> brings the level changes in as well. Ticked, it adds three things, each at 100% Amount:</p>
+<ul>
+<li>With distance, a quarter of the real change: 1.5 dB quieter for each doubling of the distance and 1.5 dB louder for each halving, so ±1.5 dB at either end of Distance at the default Distance Range and ±3.0 dB at 4.0x.</li>
+<li>While the mic's aim catches up with a swing, a quarter of the level the mic loses off axis, which is gone again once the aim arrives.</li>
+<li>As the head turns from the mic, a small drop: about 0.4 dB at 60 degrees, 0.8 dB at 90 degrees, 1.2 dB at 120 degrees and 1.5 dB facing dead away.</li>
+</ul>
+<p>Amount and the balances scale these as they scale the rest of the movement, so at 500% Amount a head facing dead away is 7.5 dB quieter. Most of the real change is left out on purpose, so that a move changes the character of the voice without pulling it out of the mix. Ticking or clearing the box glides the level in or out, as Amount does, so it can be done while the audio plays without a click; with the boom still, on mic and at the working distance there is no level change to glide.</p>
+<p>The tick-box is in the window, under Amount's scale. It is off for a new instance, and a session saved with an earlier test version opens with it off. It is saved with the session and set by hand: a host that lists a plug-in's parameters shows it as Level Follows, and it is not an automation lane.</p>
+<p>However the controls are combined, what coming nearer adds (the low end, and the level when the box is ticked) is limited. Up to 9 dB it is left alone; beyond that it is eased toward 15 dB and never passes it, so turning Amount, the balances, Proximity and Distance Range all the way up cannot make the plug-in add more than 15 dB at any frequency. At the default settings and 100% Amount the most it adds is about 3.2 dB at the very bottom with the box off, and 4.7 dB with it ticked, well below the point where the limit does anything. At 500% Amount and Distance −100%, with everything else at its default, the limit is at work: about 13.9 dB at the very bottom where 16 dB was asked for with the box off, and about 14.9 dB where 23.5 dB was asked for with it ticked. Nothing limits what moving further away, off axis or turned away takes off.</p>
 <h3 id="changing-values">Changing values</h3>
-<p>Amount, Sweep, Proximity, Input, Closeness, the Sweep row's Depth and Q, and the deep-dive values glide to a new setting instead of jumping: most of the way in under a tenth of a second, and exactly there within about half a second. So they can be changed while the audio plays without a click, and switching Input fades the Close mic correction in or out. Everything is heard as it is changed, whether the transport is running or stopped, with or without automation written. But with the boom still and on mic there is no movement for Amount, Sweep or Proximity to shape, so changing them then makes no difference to the sound; move the boom, or turn the head, and they do. The two ends of the Sweep Range are the exception: they move the notch's travel straight away, which is only heard if they are changed while the notch is cutting. Cuts is one thing or the other and changes at once; with the boom still neither setting cuts, so changing it then is silent.</p>
+<p>Amount, Sweep, Space, Auto, Proximity, Input, Closeness, Level follows the movement, the Sweep row's Depth and Q, the Space row's Size and Tone, the Auto row's Range, and the deep-dive values glide to a new setting instead of jumping: most of the way in under a tenth of a second, and exactly there within about half a second. So they can be changed while the audio plays without a click, switching Input fades the Close mic correction in or out, and ticking or clearing Level follows the movement fades the level changes in or out. Everything is heard as it is changed, whether the transport is running or stopped, with or without automation written. But with the boom still and on mic at the working distance there is no movement for Amount, Sweep, Proximity or Level follows the movement to shape, so changing them then makes no difference to the sound; move the boom, or turn the head, and they do. Space is the same: on mic at the working distance nothing is sent to the room, so there is nothing to hear when Space, Size, Tone or the placement is changed there. The two ends of the Sweep Range are the exception: they move the notch's travel straight away, which is only heard if they are changed while the notch is cutting. Cuts is one thing or the other and changes at once; with the boom still neither setting cuts, so changing it then is silent. Space's placement is not switched: one placement's reflections fade out as the other's fade in, over about half a second, and none of them moves in time. Auto is the exception the other way: it moves the actor itself, so turning it up changes the voice whether or not anything else is moving, and its movement passes through the follower, so it never jumps. A change of Head turns changes the stretches at once without bringing a turn of its own; that and a new take are described under Auto.</p>
 <h2 id="placing-a-close-recording-in-a-scene" class="k5">Placing a close recording in a scene</h2>
-<p>A line recorded at the mouth (ADR in a booth, a headset, a lavalier) has two things a voice further off in a scene does not: the low end a mic picks up that close, and a low-mid weight that says the mic is near. Three controls deal with them, and each does one job.</p>
+<p>A line recorded on a directional mic close to the mouth (ADR in a booth, a headset) has two things a voice further off in a scene does not: the low end a mic picks up that close, and a low-mid weight that says the mic is near. Three controls deal with them, and each does one job.</p>
 <p>Input says what the recording is. Set it to Close mic and the at-the-mouth low end is eased off before anything else happens. Closeness, which appears beside it, is how much: 100% is the place to start, with more for a mic that was very close or a voice with a lot of chest in it, and less for one that was already a hand's width away. This part is fixed. It does not move with the boom, and it is the same wherever the voice is put.</p>
-<p>Distance says where the voice is. Move the boom out and the voice gets a little quieter and loses low end and low mids, as it would have done with the mic that far away. How far out the end of the lane is depends on Distance Range: 1.2 metres at its default of 2.0x, 2.4 metres at 4.0x.</p>
-<p>Proximity says how strongly the low end and the low mids follow that distance. At 100% the tone changes by the natural amount; turn it up if the voice still sounds nearer than the picture, and down if moving it out thins it too much. It changes the tone only, so the level the voice loses with distance stays as Distance set it.</p>
-<p>With Input on Close mic at 100% Closeness, Amount at 100% and the boom on mic, this is what the plug-in takes off, the Close mic correction and the level included:</p>
+<p>Distance says where the voice is. Move the boom out and the voice loses low end and low mids, as it would have done with the mic that far away (and, with Level follows the movement ticked, gets a little quieter too). How far out the end of the lane is depends on Distance Range: 1.2 metres at its default of 2.0x, 2.4 metres at 4.0x.</p>
+<p>Proximity says how strongly the low end and the low mids follow that distance. At 100% the tone changes by the natural amount; turn it up if the voice still sounds nearer than the picture, and down if moving it out thins it too much. It changes the tone only, so any level the voice loses with distance stays as Distance set it.</p>
+<p>With Input on Close mic at 100% Closeness, Amount at 100% and the boom on mic, this is what the plug-in takes off, the Close mic correction included. With Level follows the movement left off, as it is by default, the top of the voice is left as it is in every row; ticked, the voice is also 1.5 dB quieter at every frequency at +100% and 2.0x, and 3.0 dB quieter at +100% and 4.0x.</p>
 <div class="scroll"><table>
 <thead>
 <tr>
@@ -402,7 +536,6 @@
 <th>125 Hz</th>
 <th>250 Hz</th>
 <th>500 Hz</th>
-<th>Top of the voice</th>
 </tr>
 </thead>
 <tbody>
@@ -413,91 +546,132 @@
 <td>−3.1 dB</td>
 <td>−1.8 dB</td>
 <td>−0.8 dB</td>
-<td>0 dB</td>
 </tr>
 <tr>
 <td>+100%</td>
 <td>2.0x</td>
 <td>100%</td>
-<td>−6.6 dB</td>
-<td>−4.5 dB</td>
+<td>−5.1 dB</td>
+<td>−3.0 dB</td>
+<td>−1.4 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>2.0x</td>
+<td>200%</td>
+<td>−6.9 dB</td>
+<td>−4.2 dB</td>
+<td>−1.9 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>100%</td>
+<td>−6.9 dB</td>
+<td>−4.2 dB</td>
+<td>−1.9 dB</td>
+</tr>
+<tr>
+<td>+100%</td>
+<td>4.0x</td>
+<td>200%</td>
+<td>−10.1 dB</td>
+<td>−6.1 dB</td>
 <td>−2.9 dB</td>
-<td>−1.5 dB</td>
-</tr>
-<tr>
-<td>+100%</td>
-<td>2.0x</td>
-<td>200%</td>
-<td>−8.4 dB</td>
-<td>−5.7 dB</td>
-<td>−3.5 dB</td>
-<td>−1.5 dB</td>
-</tr>
-<tr>
-<td>+100%</td>
-<td>4.0x</td>
-<td>100%</td>
-<td>−9.9 dB</td>
-<td>−7.2 dB</td>
-<td>−5.0 dB</td>
-<td>−3.0 dB</td>
-</tr>
-<tr>
-<td>+100%</td>
-<td>4.0x</td>
-<td>200%</td>
-<td>−13.2 dB</td>
-<td>−9.1 dB</td>
-<td>−5.9 dB</td>
-<td>−3.0 dB</td>
 </tr>
 </tbody>
 </table></div>
 <p>A way to work: set Input to Close mic and leave Closeness at 100%. Move the boom out until the voice is as far off as the picture, then listen to the low mids. If it still sounds as though the mic is at the mouth, raise Proximity; if the distance you want is further than the lane reaches, raise Distance Range. Come back to Closeness last, with the boom at the working distance, if the voice is boomy or thin before any move is made. The italic line on the Proximity row says how much low mid the distance is taking off as you go; it leaves the Close mic correction out, since that is not the distance's doing.</p>
 <p>Because Closeness is fixed and Distance is a lane, the voice can then be moved through the scene: automate Distance (and Turn) and the low end and low mids follow it, by as much as Proximity says.</p>
 <h2 id="automation" class="k6">Automation</h2>
-<p>Turn, Distance, Head, Amount, Sweep and Flick are automation lanes. Record a pass by moving the boom or the head on the dial (or the controls) while the host is writing automation, then edit and play it back as you would any other automation. Proximity, Input, Closeness, the Sweep row's values (Depth, Q, Range and Cuts) and the deep-dive values are not automatable.</p>
+<p>Turn, Distance, Head, Amount, Sweep, Space, Auto and Flick are automation lanes. Record a pass by moving the boom or the head on the dial (or the controls) while the host is writing automation, then edit and play it back as you would any other automation. Proximity, Input, Closeness, Level follows the movement (Level Follows), the Sweep row's values (Depth, Q, Range and Cuts), the Space row's values (Placement, Size and Tone), the Auto row's Head turns and Range (Auto Rate and Auto Range) and the deep-dive values are not automatable. The take is a session value: it is saved with the session but is not a parameter at all.</p>
+<p>What Auto moves is not written to the Turn, Distance and Head lanes; it is added to them as the audio plays. Automating Auto itself brings its movement in and out: a line can be left still and the next given movement, or Auto taken down for a line that should stay put.</p>
 <p>Flick is recorded as a short step. However quickly the button is clicked, it stays down for at least an eighth of a second, so every buffer size catches it and the lane holds a step that plays back as a flick each time it rises. A step drawn in by hand works the same way.</p>
-<p>The plug-in's movement is worked out from the lanes alone, on the host's timeline. A held position renders the same at any buffer size and offline, and playback started from any point renders the same whatever the buffer size: when playback starts somewhere else, or the host jumps to another place (a locate or a loop), the plug-in begins at the position the lanes give there rather than travelling from wherever it was, with no sweep left over from a move it did not hear. Automated moves are read once per host buffer, which is how hosts deliver automation, so at very large buffer sizes a move is followed in coarser steps and the result differs slightly from a render at a small buffer size. When the transport is stopped the plug-in still follows changes as you make them.</p>
+<p>The plug-in's movement is worked out from the lanes alone, on the host's timeline. A held position renders the same at any buffer size and offline, and playback started from any point renders the same whatever the buffer size: when playback starts somewhere else, or the host jumps to another place (a locate or a loop), the plug-in begins at the position the lanes give there rather than travelling from wherever it was, with no sweep left over from a move it did not hear. Auto does the same: it begins with the head where that stretch of the timeline has it. Automated moves are read once per host buffer, which is how hosts deliver automation, so at very large buffer sizes a move is followed in coarser steps and the result differs slightly from a render at a small buffer size. When the transport is stopped the plug-in still follows changes as you make them.</p>
 <p>The plug-in follows the host's position only while that position moves with the audio. If it does not (varispeed, a position held still during pre-roll, a host that reports it unevenly), the plug-in keeps its own time and the movement carries on at its normal speed, until the host's position runs with the audio again.</p>
-<p>Bypassing the plug-in passes the audio through untouched. It keeps following the lanes while bypassed, so when it is switched back on it carries on from where they are.</p>
-<h2 id="the-window" class="k1">The window</h2>
-<p>The window has the Polar dial on the left and the ledger on the right: Sweep with its Flick button, Proximity, Amount, and Input at the foot.</p>
+<p>Bypassing the plug-in passes the audio through untouched. It keeps following the lanes while bypassed, and Auto keeps listening and moving, so when it is switched back on it carries on from where they are.</p>
+<h2 id="presets" class="k1">Presets</h2>
+<p>A preset holds every setting except the performance: all of the controls and the values of the Sweep, Space and Auto rows, Input, Closeness, Level follows the movement, the deep-dive values, and Auto's take. It does not hold Turn, Distance, Head or Flick, so loading one changes how the plug-in moves the voice and leaves where the boom and the head are, and any automation on those lanes, alone.</p>
+<p>The preset line is at the top right of the window: "‹  Walk and talk  ›  SAVE". The arrows step to the previous and next preset, round the whole list; with no preset chosen, the next arrow goes to the first and the previous arrow to the last. Click the name to open the list: the built-in presets, then your own, then Save as…, Delete with the name of the preset in use (for one of your own), and Reveal presets folder. The preset in use carries a brass dot in the list.</p>
+<p>When a setting is changed after the preset was loaded or saved, a small brass dot appears after its name. Putting the setting back as the preset has it, or loading the preset again, clears the dot. Moving the boom or the head never shows it, since they are not part of a preset; a new take does, since the take is. If the file of the preset in use is saved again from another instance of the plug-in, the window notices within about a second and compares the settings with the preset as it now is.</p>
+<p>SAVE writes the settings over the preset of your own that is in use, without asking. With a built-in preset in use, or none, it opens a field over the name instead, holding the name in use: type a name and press Return to save, or press Escape to leave without saving. Only Return saves: a click elsewhere in the window, or switching to another window, leaves the field without saving. Save as… in the list opens the same field whatever is in use, and if a notice of a newer version is in the preset line's place, it is dismissed first so the field can be seen. Saving under the name of one of your own presets writes over it: choosing that name is the answer to whether to. A built-in preset cannot be written over, so a name that is a built-in preset's is saved with a number after it ("Walk and talk 2"), the first number that neither a built-in preset nor one of your own already has, so an earlier "Walk and talk 2" is kept and the new one becomes "Walk and talk 3".</p>
+<p>A name with nothing in it that a file name can hold cannot be saved; nor can anything when the presets folder cannot be written to. A name Windows keeps for its devices (AUX, CON, NUL, COM1 and the like) is saved with an underscore after it ("Aux_"), so that the file can be written on any computer. While a name is being typed, Save takes it as Return does. Then "Could not save the preset" shows in vermilion small capitals in the preset line's place for about three seconds, and the line comes back (a click on the words brings it back at once). Nothing is saved, and the preset named stays as it was.</p>
+<p>Delete moves the preset's file to the bin, so a slip can be undone from there. The settings stay as they are, with no preset named.</p>
+<p>Loading a preset sets each setting the way moving it by hand does, so the host sees the change and can undo it. Every value is kept inside the range of its control. Loading changes the sound the way changing those controls by hand does: the values that glide when changed by hand glide to their new settings here too (see Changing values).</p>
+<p>The name of the preset last loaded or saved is kept with the session, so the window names it when the session is opened again. A session saved before presets existed names none.</p>
+<h3 id="the-built-in-presets">The built-in presets</h3>
+<p>Body Language comes with six presets built in. Their values are first guesses, chosen as starting points, and are to be tuned by ear during testing; anything not listed for a preset is at its default.</p>
+<ul>
+<li>
+<strong>Default</strong>: every setting a preset holds at its default, and the first take.</li>
+<li>
+<strong>Walk and talk</strong>: Auto 40%, Head turns 14 a minute, Follow 55%, and Space 15% by a wall.</li>
+<li>
+<strong>Turned away by a wall</strong>: Space 45% by a wall, with Tone at 40%, and Amount 130%.</li>
+<li>
+<strong>Close booth line in a room</strong>: Input on Close mic with Closeness at 100%, Proximity 150%, Distance Range 3.0x, and Space 25% in the open.</li>
+<li>
+<strong>Trailer sweeps</strong>: Sweep 80% with Depth 7 dB, cutting on any move of the boom, and Amount 150%.</li>
+<li>
+<strong>Restless</strong>: Auto 80%, Head turns 22 a minute, Range 70 degrees, and Follow 60%.</li>
+</ul>
+<h3 id="your-presets">Your presets</h3>
+<p>Your own presets are files, one for each preset, named after it with the extension .blpreset. They are kept in a folder called Presets, under Sammy J and Body Language in your user's application data folder: on a Mac that is ~/Library/Application Support/Sammy J/Body Language/Presets, and on Windows the same folders under your AppData\Roaming folder. Reveal presets folder opens it. A preset file can be copied to another computer, or sent to someone, and appears in the list the next time it is opened. A file that is not a preset, or that carries a document type, entities or nesting no preset has, is left out of the list without being read further.</p>
+<p>A name is made safe for a file before it is saved: characters a file name cannot hold, such as / and :, are left out. A file in the folder that cannot be read is left out of the list. A file from another version of Body Language loads the settings it has; any it does not have are set to their defaults, and any this version does not know are ignored.</p>
+<h2 id="the-window" class="k2">The window</h2>
+<p>The window is 1000 by 752 points, with the Polar dial on the left and the ledger on the right. The ledger's five rows, from the top, are Sweep with its Flick button, Space, Auto, Proximity and Amount, with the Level follows the movement tick-box under Amount and Input at the foot. Each row opens in place, from a double-click on its name, to show its own values. The preset line is above the ledger, at the top right (see Presets). The Strip can take the dial's place, to show the last six seconds of movement (see The Strip). The values, the name and the readouts in italics are set in Instrument Serif and the small capitals in Hanken Grotesk, two typefaces published under the SIL Open Font License 1.1 and built into the plug-in.</p>
 <h3 id="the-dial">The dial</h3>
 <p>The dial is a plan view of the actor's head, which sits at the centre and faces the way Head has it, up the dial when it faces ahead. A short tick on the faint ring round the head marks the way it faces. Angles are marked round the rim from 0 in front to 180 behind. Distance from the centre stands for frequency: the rings are 125 Hz, 500 Hz, 2 kHz, 8 kHz and 16 kHz, from the inside out.</p>
 <p>The voice is drawn as five rings, one per band, each carrying that band's own waveform from the plug-in's output, so the picture moves with the sound. Each ring is pulled in where the voice loses that band, so the low rings stay round and the high rings lean toward where the mouth faces, and turn with the head. On a computer without suitable graphics support the voice is drawn as plain outlines instead, and everything else is the same.</p>
 <p>The boom is the brass capsule, pointing at the head from wherever it is. On the rim it is at the working distance; a third of the rim further out or further in is Distance at +100% or −100%. Its label gives the distance in metres. The line from the boom to the head carries a marker where it crosses each ring: what the mic is hearing in that band.</p>
 <p>While the sweep is cutting, a vermilion ring shows where the notch is on the dial's frequency scale, brighter the deeper it cuts, with its frequency beside it ("Sweep 2.4 kHz").</p>
-<p>The dial runs its own copy of the plug-in's follower, so the boom trails and settles on screen as it does in the sound, whether or not the transport is running.</p>
+<p>While Space is up, the surfaces the actor is standing by are drawn as brass hairlines outside the rim: by a wall, one under the dial, behind the actor; in a corner, a second one at the left as well; in the open, none. An arc just outside the rim, on the side the head faces, shows the voice thrown at the room. It appears once the reflections are within about 45 dB of the direct voice and is brighter the more comes back, and the hairlines brighten with it.</p>
+<p>While the Space row is open, the dial draws the room plan in place of those hairlines. Each surface is a wall: a firm ivory line with short hatching on its far side, under the dial behind the actor by a wall, and a second one at the left in a corner. In the open there is no wall, and the words IN THE OPEN stand where it would be. The walls are drawn whatever Space is set to, so the placement can be seen before any of it is heard.</p>
+<p>For each wall the plan draws the way the voice reaches the mic by it: a faint ivory line from the head to the wall and another from there on to the boom, with a small open circle where they meet the wall. The point on the wall is found by mirroring the boom in the wall, as a first reflection is. In a corner there is also the way round by both walls. The lines follow the boom as it moves, and they brighten and fade with how much is coming back, as the arc does: they are not drawn with Space at 0, or while nothing comes back or the reflections are more than about 45 dB under the voice (with the mouth on mic and the boom at the working distance, nothing does). A wall is drawn longer where a route meets it further along, but never into the readouts in the dial's corners; a route that would meet a wall there, or that would need the boom on the far side of a wall, is left out.</p>
+<p>The plan is a picture of where the reflections come from, not a simulation of the room. Space plays one pattern of reflections for each placement, and what the plan shows is what the pattern is weighted toward: surfaces behind the actor, and to their left in a corner, which give more back when the mouth faces them. The plan only shows; it cannot be dragged, and it changes nothing in the sound.</p>
+<p>The dial runs its own copy of the plug-in's follower, so the boom trails and settles on screen as it does in the sound, whether or not the transport is running. It is given Auto's movement from the audio as it happens, so with Auto up the head on the dial drifts and turns as the audio's does. While the host is not running the audio through the plug-in (some hosts stop doing so when the transport stops), there is no Auto movement to show, and the dial draws the head and the boom where the lanes have them.</p>
 <h3 id="moving-the-boom-and-the-head">Moving the boom and the head</h3>
 <p>Drag anywhere on or round the dial and the boom goes to the pointer: all the way round the head, and nearer or further by how far from the centre the pointer is. Hold Shift to swing it round without changing its distance, or Alt to move it in and out without changing its angle. Double-click the dial to put the boom back on mic at the working distance, in front of wherever the head faces.</p>
-<p>The middle of the dial, inside the faint ring round the head, is the head's handle. Drag from there and the head turns to face the pointer; the boom stays where it is. The ring brightens under the pointer. Double-click inside it to face the head ahead again.</p>
-<p>Moves made on the dial while the host is writing automation are written to the Turn, Distance and Head lanes.</p>
+<p>The middle of the dial, inside the faint ring round the head, is the head's handle. Drag from there and the head turns to face the pointer; the boom stays where it is. With Auto up, it is the head as drawn, Auto's turn included, that faces the pointer: the Head lane is set to that less what Auto is adding. The ring brightens under the pointer. Double-click inside it to face the head ahead again.</p>
+<p>Moves made on the dial while the host is writing automation are written to the Turn, Distance and Head lanes. Auto's movement is not: it is added to the lanes, and the dial shows the two together.</p>
 <h3 id="the-readouts">The readouts</h3>
-<p><strong>On mic</strong>, top left, is how much of the voice's presence and air is reaching the mic, as a percentage of on mic, level included. <strong>Head</strong>, top right, is which way the head faces ("ahead", "40° left", "away"). <strong>Boom</strong>, bottom left, is where the boom is round the actor ("40° right"), or "on mic" when it is in front of the mouth and "behind" when it is directly behind it, with its distance in metres beneath. <strong>At the mic</strong>, bottom right, has a bar for each of the five bands showing how much of it arrives, level included; full height is on mic.</p>
+<p><strong>On mic</strong>, top left, is how much of the voice's presence and air is reaching the mic, as a percentage of on mic, with the level when Level follows the movement is ticked. <strong>Head</strong>, top right, is which way the head faces ("ahead", "40° left", "away"), Auto's turn included. <strong>Boom</strong>, bottom left, is where the boom is round the actor ("40° right"), or "on mic" when it is in front of the mouth and "behind" when it is directly behind it, with its distance in metres beneath. <strong>At the mic</strong>, bottom right, has a bar for each of the five bands showing how much of it arrives, with the level when Level follows the movement is ticked; full height is on mic.</p>
 <p>The written values (the On mic percentage, the Head's angle, the boom's angle and its distance, each marked with a dotted line) can be dragged like number boxes: up or to the right is more, and 200 points of travel is the whole range. Hold Shift for finer changes. Dragging On mic up brings the boom round toward the mouth on whichever side it is; dragging an angle takes the boom or the head round, past 180 on to the other side; dragging the distance moves the boom in and out.</p>
-<p>Double-click a written value to type it, and press Return (or click elsewhere) to take it, or Escape to leave it as it was. An angle can be typed as a number (negative is left) or as "90 left", "30 right", "behind" or "ahead"; for the boom's angle, "on mic" and "behind" put it in front of the mouth and behind the head, wherever the head faces. The distance is typed in metres, On mic as a percentage. Alt-click a written value to put it back: the boom on mic, the head ahead, the distance to the working distance.</p>
+<p>Double-click a written value to type it, and press Return (or click elsewhere) to take it, or Escape to leave it as it was. An angle can be typed as a number (negative is left) or as "90 left", "30 right", "behind" or "ahead"; for the boom's angle, "on mic" and "behind" put it in front of the mouth and behind the head, wherever the head faces. The distance is typed in metres, On mic as a percentage. With Auto up, the Head's angle is dragged and typed as it is drawn, Auto's turn included: the head is put where the number says, and the Head lane is set to that less what Auto is adding. Alt-click a written value to put it back: the boom on mic, the head ahead, the distance to the working distance.</p>
 <h3 id="the-ledger">The ledger</h3>
 <p><strong>Sweep</strong> is the top row: its slider and value, with the <strong>Flick</strong> button beside its name. The word Sweep is lit in the sweep's vermilion while Sweep is up; at 0% it is dim and the value reads "off". Double-click the slider to go back to 0%. Flick is drawn as an outline, and fills while it is down: press it to fire a flick; it is down for as long as it is held, and for at least an eighth of a second.</p>
-<p>Double-click the word Sweep to open the row. Its values appear beneath the slider on a lighter ground, and Proximity and Amount move down: Depth, Q and the Range as written values to drag or type, the Cuts line to click, and Reset at the right when anything has been changed. A brass dot beside the word Sweep says that something in the row is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under Sweep.</p>
-<p><strong>Proximity</strong> is the row under Sweep: its slider and value, and beside its name the line in italics that says what the distance is doing to the low mids ("-1.2 dB of low mid", or "at the working distance"). The line follows the boom as it moves. Double-click the slider to go back to 100%.</p>
-<p><strong>Amount</strong> is the large slider below, with its value above it, marked from Off through Natural to Exaggerated 300. Double-click the slider to go back to 100%.</p>
-<p>The values of Sweep, Proximity and Amount at the right of their rows are written values too: drag one, double-click it to type a value, or Alt-click it to put it back to its default.</p>
-<p><strong>Input</strong> is the line at the foot: click it to choose Boom or Close mic from the menu. With Close mic chosen, <strong>Closeness</strong> appears at the right of the line. It is dragged like the other written values: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click it to type it, or Alt-click it to go back to 100%.</p>
-<h2 id="not-built-yet" class="k2">Not built yet</h2>
+<p>Double-click the word Sweep to open the row. Its values appear beneath the slider on a lighter ground, and the rows beneath move down: Depth, Q and the Range as written values to drag or type, the Cuts line to click, and Reset at the right when anything has been changed. A brass dot beside the word Sweep says that something in the row is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under Sweep.</p>
+<p><strong>Space</strong> is the row under Sweep: its slider and value. The word Space is lit in brass while Space is up; at 0% it is dim and the value reads "off". Beside the word, while Space is up, a line in italics says roughly how far under the direct voice the reflections are at that moment ("14 dB under the voice"), or "nothing reaches the room" when nothing is being sent. The line follows the head and the boom as they move. It is worked out from what the turn takes from the voice at 1.5 kHz, so it is a guide and not a measurement of the audio. Double-click the slider to go back to 0%.</p>
+<p>Double-click the word Space to open the row. Beneath the slider, on a lighter ground, are Placement to click, Size and Tone as written values to drag or type, the strip that draws the reflections as they arrive, and Reset at the right when anything has been changed. A brass dot beside the word Space says that something in the row is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under Space.</p>
+<p><strong>Auto</strong> is the row under Space: its slider and value. The word Auto is lit in ivory while Auto is up; below 0.5% it is dim and the value reads "off". Beside the word, while Auto is up, a line in italics says what Auto is doing in the audio at that moment: "holding" when the head is where its stretch has it; "a turn is waiting for a gap" when a new stretch has begun and no gap has come yet, and also when a word has cut a turn short and it is waiting for the next gap to finish; and "turning" while the head is on its way in a gap. While the host is not running the audio through the plug-in the line is blank, since nothing is being heard. Double-click the slider to go back to 0%.</p>
+<p>Double-click the word Auto to open the row. Beneath the slider, on a lighter ground, are Head turns and Range as written values to drag or type, the Take line to click for another take, and Reset at the right when Head turns or Range has been changed. A brass dot beside the word Auto says that Head turns or Range is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under Auto.</p>
+<p><strong>Proximity</strong> is the row under Auto: its slider and value, and beside its name the line in italics that says what the distance is doing to the low mids ("-1.2 dB of low mid", or "at the working distance"). The line follows the boom as it moves. Double-click the slider to go back to 100%.</p>
+<p>Double-click the word Proximity to open the row. Beneath the slider, on a lighter ground, are Range as a written value to drag or type, the Distance line giving the distances it makes, and Reset at the right when Range has been changed. A brass dot after the word Proximity says that Range is away from its default, open or shut. Double-click the word again to shut the row. Range is described under The deep-dive values.</p>
+<p><strong>Amount</strong> is the large slider below, with its value above it, marked from Off through Natural to Exaggerated 500. Double-click the slider to go back to 100%.</p>
+<p>Double-click the word Amount to open the row. Its values appear on a lighter ground beneath the scale and the tick-box, ending on the Input line, and nothing moves: Head turn, Off axis and Proximity as written values to drag or type, Follow on the line beneath with "tight" or "loose" after it at either end, and Reset at the right when anything has been changed. A brass dot after the word Amount says that one of them is away from its default, open or shut. Double-click the word again to shut the row. Each value is described under The deep-dive values.</p>
+<p>Only one row is open at a time: opening any of Sweep, Space, Auto, Proximity and Amount shuts whichever other row was open.</p>
+<p><strong>Level follows the movement</strong> is the tick-box under Amount's scale. Click it, or its words, to tick or clear it; the box fills in brass while it is ticked. It is described under Level.</p>
+<p>The values of Sweep, Space, Auto, Proximity and Amount at the right of their rows (Amount's above its slider) are written values too: drag one, double-click it to type a value, or Alt-click it to put it back to its default.</p>
+<p><strong>Input</strong> is the line at the foot: click it to choose Boom, Lavalier or Close mic from the menu. With Close mic chosen, <strong>Closeness</strong> appears just after the name of the choice, with its own name above its value. It is dragged like the other written values: up or to the right is more, 200 points of travel is the whole range, and Shift makes finer changes. Double-click it to type it (the field opens over its value, under its name), or Alt-click it to go back to 100%.</p>
+<p>At the right of the Input line, <strong>POLAR · STRIP</strong> says which view is in the dial's place: the one shown is in ivory, the other dim. Click either word to show that view.</p>
+<h3 id="the-strip">The Strip</h3>
+<p>The Strip shows how the voice has moved over the last six seconds, in the dial's place. Click STRIP at the right of the Input line to show it, and POLAR to bring the dial back. The view you chose is saved with the session (it is not a parameter, and is not automated); a new instance opens on the dial.</p>
+<p><a class="shot" href="docs/strip.gif" target="_blank" rel="noopener" data-caption="The Strip view: the head turning, each band's loss beneath it, and a sweep's mark"><img loading="lazy" src="docs/strip.gif" alt="The Strip view: the head turning, each band's loss beneath it, and a sweep's mark"></a></p>
+<p>Time runs from left to right, six seconds ago at the left and now at the right, where a hairline marks now; the scale at the foot reads −6 s, −4, −2 and NOW. It moves whether or not the transport is running, since it is drawn from the dial's own copy of the follower, and with nothing moving it is a set of flat lines.</p>
+<p>At the top, <strong>Head</strong> is the head's angle from the mic, drawn as one ivory line: on the faint line across the middle when the mouth faces the mic, above it when the head is turned to the right of the mic and below when it is turned to the left, reaching the top or the bottom when it faces directly away. At its right is the angle now, such as "55° L", or "on mic".</p>
+<p>Under it are the five bands, 16 kHz at the top down to 125 Hz at the bottom. Each has a faint line at 0 dB and a brass line for what that band has lost at the mic, with the space between them faintly filled; 12 dB of loss is the full height of the row, and a greater loss stays at the foot of the row. The figure at the right of each row is its change now, in dB, with the level included when Level follows the movement is ticked. A band that gains rather than loses (with Proximity, for a boom brought in close) stays on its 0 dB line, and its figure has a plus sign.</p>
+<p>A vermilion line with a small diamond at its head marks each moment a sweep or a flick began, the first of them named SWEEP. A sweep that keeps cutting through a long move has one mark, at its start.</p>
+<p>The Strip only shows: it cannot be dragged or clicked, and the dial's readouts (On mic, Head, Boom and At the mic) are not shown while it is.</p>
+<h2 id="not-built-yet" class="k3">Not built yet</h2>
 <p>These parts of Body Language do not exist yet:</p>
 <ul>
-<li>
-<strong>Space</strong>, the early reflections of the room the actor is in, with the actor in the open, by a wall or in a corner.</li>
-<li>
-<strong>Auto</strong>, movement the plug-in makes by itself from a seed, so that it repeats exactly.</li>
+<li>Writing <strong>Auto</strong>'s movement into the host's Turn, Distance and Head lanes, so it can be edited by hand.</li>
+<li>Lookahead for <strong>Auto</strong> in offline renders, so a turn could be placed knowing where the next gap ends.</li>
 <li>
 <strong>Fingerprint</strong>.</li>
-<li><strong>Presets.</strong></li>
-<li>The <strong>Strip</strong> view, and the rest of the deep-dive values in the window (the three balances, Distance Range and Follow).</li>
 </ul>
-<h2 id="updates" class="k3">Updates</h2>
-<p>When its window opens, Body Language looks for a newer version, at most once a day (a day it could not reach the internet counts). If there is one, a line appears at the top right of the window: "Version 1.0.1 is available", with Download, Skip and Later, and What's new when there are release notes to read.</p>
+<h2 id="updates" class="k4">Updates</h2>
+<p>When its window opens, Body Language looks for a newer version, at most once a day (a day it could not reach the internet counts). If there is one, a line appears at the top right of the window, in the preset line's place: "Version 1.0.1 is available", with Download, Skip and Later, and What's new when there are release notes to read. Once it is dismissed the preset line comes back.</p>
 <p>Download opens the installer's page in your browser; run the installer with your host closed. Skip hides that version for good, and a later version is still offered. Later hides the line until your host is next started.</p>
 <p>The check reads one small public file listing the latest version. It sends nothing about you, your licence or your computer, and the plug-in never downloads or installs anything by itself. Offline, or behind a firewall, it stays silent. Versions before 1.0.0 are testers' builds and are also told about beta versions.</p>
 
